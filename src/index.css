@@ -17,6 +17,9 @@
 :active {
 	outline: none;
 }
+a {
+	color: inherit;
+}
 a:focus,
 a:active {
 	outline: none;
@@ -29,8 +32,6 @@ aside {
 }
 html,
 body {
-	/* display: flex;
-  flex-direction: column; */
 	min-height: 100%;
 	width: 100%;
 

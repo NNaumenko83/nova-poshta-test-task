@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 export const Header: React.FC = () => {
 	return (
-		<header>
+		<header style={{ backgroundColor: "red" }}>
 			<Container>
 				<h1>NovaPoshta</h1>
 				<nav>

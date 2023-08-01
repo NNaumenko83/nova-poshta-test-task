@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { FormWrapper } from "./TrackForm.styled";
 
 export const TrackForm: React.FC = () => {
 	const [ttnNumber, setTtnNumber] = useState("");
@@ -14,17 +15,19 @@ export const TrackForm: React.FC = () => {
 	};
 
 	return (
-		<form onSubmit={handleSubmit} style={{ padding: "10px" }}>
-			<input
-				type="text"
-				value={ttnNumber}
-				onChange={handleChange}
-				placeholder="Введіть номер ТТН"
-				style={{ marginRight: "10px" }}
-			/>
-			<button type="submit" style={{ background: "red", color: "white", border: "none" }}>
-				Пошук
-			</button>
-		</form>
+		<FormWrapper>
+			<form onSubmit={handleSubmit} style={{ padding: "10px" }}>
+				<input
+					type="text"
+					value={ttnNumber}
+					onChange={handleChange}
+					placeholder="Введіть номер ТТН"
+					style={{ marginRight: "10px" }}
+				/>
+				<button type="submit" style={{ background: "red", color: "white", border: "none" }}>
+					Пошук
+				</button>
+			</form>
+		</FormWrapper>
 	);
 };
