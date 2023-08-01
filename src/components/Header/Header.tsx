@@ -1,7 +1,13 @@
 import { Container } from "../Container/Container";
 import { NavLink } from "react-router-dom";
 import { HeaderContainer, HeaderStyled, LogoText } from "./Header.styled";
-import sprite from "../../assets/symbol-defs.svg";
+
+import { styled } from "styled-components";
+import ResponsiveDrawer from "../Drawer/Drawer";
+
+const NavLinkStyled = styled(NavLink)`
+	font-size: ${props => props.theme.fontSizes.xsmall};
+`;
 
 export const Header: React.FC = () => {
 	return (
@@ -9,9 +15,10 @@ export const Header: React.FC = () => {
 			<Container>
 				<HeaderContainer>
 					<LogoText>NovaPoshta</LogoText>
+					<ResponsiveDrawer />
 					<nav>
-						<NavLink to="/">Перевірити ТТН</NavLink>
-						<NavLink to="/warehouses">Список відділень</NavLink>
+						<NavLinkStyled to="/">Перевірити ТТН</NavLinkStyled>
+						<NavLinkStyled to="/warehouses">Список відділень</NavLinkStyled>
 					</nav>
 					{/* <img src={logo} alt="Nova Poshta Logo" style={{ height: "40px" }} /> */}
 				</HeaderContainer>

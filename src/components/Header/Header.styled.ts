@@ -6,7 +6,7 @@ export const HeaderStyled = styled.header`
 `;
 
 export const LogoText = styled.span`
-	font-size: ${props => props.theme.fontSizes.medium};
+	font-size: ${props => props.theme.fontSizes.xsmall};
 `;
 
 export const HeaderContainer = styled.div`
