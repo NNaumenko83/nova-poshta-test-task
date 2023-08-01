@@ -2,6 +2,7 @@ import { styled } from "styled-components";
 
 export const HomeContainer = styled.div`
 	border: 1px solid red;
+	min-height: 100%;
 
 	display: grid;
 	grid-template-columns: 3fr 1fr;
@@ -11,5 +12,5 @@ export const HomeContainer = styled.div`
 `;
 
 // .div1 {  }
-// .div2 { grid-area: 2 / 1 / 3 / 2; }
+// .div2 {  }
 // .div3 { grid-area: 2 / 2 / 3 / 3; }
