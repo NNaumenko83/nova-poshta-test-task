@@ -15,3 +15,10 @@ export const HeaderContainer = styled.div`
 	align-items: center;
 	justify-content: space-between;
 `;
+
+export const NavigateWrapper = styled.div`
+	display: none;
+	@media screen and (min-width: 768px) {
+		display: block;
+	}
+`;
