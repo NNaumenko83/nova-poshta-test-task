@@ -18,7 +18,7 @@ export const HeaderContainer = styled.div`
 
 export const NavigateWrapper = styled.div`
 	display: none;
-	@media screen and (min-width: 768px) {
+	@media screen and (min-width: 600px) {
 		display: block;
 	}
 `;
