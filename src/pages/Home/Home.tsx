@@ -1,11 +1,17 @@
 import { Main } from "../../components/Main/Main";
+import { Sidebar } from "../../components/SideBar/Sidebar";
 import { TrackForm } from "../../components/TrackForm/TrackForm";
-S;
+import { TrackInfo } from "../../components/TrackInfo/TrackInfo";
+import { HomeContainer } from "./Home.styled";
 
 export const Home = () => {
 	return (
 		<Main>
-			<TrackForm />
+			<HomeContainer>
+				<TrackForm />
+				<TrackInfo />
+				<Sidebar />
+			</HomeContainer>
 		</Main>
 	);
 };
