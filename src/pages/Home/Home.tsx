@@ -1,3 +1,10 @@
+import { Main } from "../../components/Main/Main";
+import { TrackForm } from "../../components/TrackForm/TrackForm";
+
 export const Home = () => {
-	return <h1>Home</h1>;
+	return (
+		<Main>
+			<TrackForm />
+		</Main>
+	);
 };

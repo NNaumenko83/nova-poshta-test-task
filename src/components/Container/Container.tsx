@@ -1,9 +1,9 @@
 import { ReactNode } from "react";
 
-interface SidebarProps {
+interface IContainerProps {
 	children: ReactNode;
 }
 
-export const Container: React.FC<SidebarProps> = ({ children }) => {
+export const Container: React.FC<IContainerProps> = ({ children }) => {
 	return <div>{children}</div>;
 };
