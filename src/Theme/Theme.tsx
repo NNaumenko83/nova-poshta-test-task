@@ -6,7 +6,7 @@ const theme = {
 		mainBackGround: "#fffff",
 		secondBackGround: "#df012e",
 		darkText: "#000000",
-		brightTxt: "#fffff",
+		brightTxt: "#ffffff",
 	},
 
 	fontSizes: {

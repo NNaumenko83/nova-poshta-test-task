@@ -1,17 +1,21 @@
 import { Container } from "../Container/Container";
 import { NavLink } from "react-router-dom";
+import { HeaderContainer, HeaderStyled, LogoText } from "./Header.styled";
+import sprite from "../../assets/symbol-defs.svg";
 
 export const Header: React.FC = () => {
 	return (
-		<header style={{ backgroundColor: "red" }}>
+		<HeaderStyled>
 			<Container>
-				<h1>NovaPoshta</h1>
-				<nav>
-					<NavLink to="/">Перевірити ТТН</NavLink>
-					<NavLink to="/warehouses">Список відділень</NavLink>
-				</nav>
-				{/* <img src={logo} alt="Nova Poshta Logo" style={{ height: "40px" }} /> */}
+				<HeaderContainer>
+					<LogoText>NovaPoshta</LogoText>
+					<nav>
+						<NavLink to="/">Перевірити ТТН</NavLink>
+						<NavLink to="/warehouses">Список відділень</NavLink>
+					</nav>
+					{/* <img src={logo} alt="Nova Poshta Logo" style={{ height: "40px" }} /> */}
+				</HeaderContainer>
 			</Container>
-		</header>
+		</HeaderStyled>
 	);
 };
