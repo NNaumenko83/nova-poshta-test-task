@@ -1,9 +1,9 @@
-// TrackInfo.tsx
+import { TrackInfoStyled } from "./TrackInfo.styled";
 
 export const TrackInfo: React.FC = () => {
 	return (
-		<div>
+		<TrackInfoStyled>
 			<h1>Track info</h1>
-		</div>
+		</TrackInfoStyled>
 	);
 };
