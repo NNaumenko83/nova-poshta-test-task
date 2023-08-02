@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FormWrapper } from "./TrackForm.styled";
+import { ButtonStyled } from "../Button/Button";
 
 export const TrackForm: React.FC = () => {
 	const [ttnNumber, setTtnNumber] = useState("");
@@ -24,9 +25,7 @@ export const TrackForm: React.FC = () => {
 					placeholder="Введіть номер ТТН"
 					style={{ marginRight: "10px" }}
 				/>
-				<button type="submit" style={{ background: "red", color: "white", border: "none" }}>
-					Пошук
-				</button>
+				<ButtonStyled type="submit">Пошук</ButtonStyled>
 			</form>
 		</FormWrapper>
 	);
