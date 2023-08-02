@@ -11,3 +11,10 @@ export const FormWrapper = styled.div`
 		grid-area: 1 / 1 / 2 / 3;
 	}
 `;
+
+export const Form = styled.form`
+	display: flex;
+	gap: 10px;
+	justify-content: conter;
+	align-items: center;
+`;
