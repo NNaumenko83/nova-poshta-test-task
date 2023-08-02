@@ -1,7 +1,17 @@
 import React from "react";
 
-type Props = {};
+interface ITrackProps {
+	number: string;
+}
 
-const TrackItem = (props: Props) => {
-	return <div>TrackItem</div>;
+export const TrackItem: React.FC<ITrackProps> = ({ number }) => {
+	return (
+		<div
+			onClick={() => {
+				console.log("click");
+			}}
+		>
+			{number}
+		</div>
+	);
 };

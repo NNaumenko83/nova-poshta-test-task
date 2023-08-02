@@ -44,6 +44,13 @@ const trackSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(getTrack.fulfilled, (state, action) => {
+				if (
+					state.list.find(item => {
+						return item.number === action.payload.number;
+					})
+				) {
+					return state;
+				}
 				state.list = [action.payload, ...state.list];
 				state.loading = false;
 			})
