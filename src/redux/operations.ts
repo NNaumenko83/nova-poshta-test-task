@@ -23,8 +23,9 @@ export const getTrack = createAsyncThunk<Track, string, { rejectValue: string }>
 
 		try {
 			const response = await axios.post("", body);
-			const { number, status, WarehouseRecipient, WarehouseSender } = response.data;
-			return { number, status, WarehouseRecipient, WarehouseSender };
+			console.log("response:", response);
+			const { Number, Status, WarehouseRecipient, WarehouseSender } = response.data.data[0];
+			return { number: Number, status: Status, WarehouseRecipient, WarehouseSender };
 		} catch (error) {
 			if (error instanceof Error) {
 				return rejectWithValue(error.message);

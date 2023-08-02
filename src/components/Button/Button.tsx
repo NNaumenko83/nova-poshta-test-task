@@ -25,7 +25,6 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 	};
 
 	const theme = useTheme();
-	console.log("theme:", theme.colors);
 
 	return (
 		<Button
