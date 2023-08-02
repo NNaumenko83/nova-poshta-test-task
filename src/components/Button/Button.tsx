@@ -7,6 +7,7 @@ interface ButtonStyledProps {
 	loading?: boolean;
 	type?: "button" | "submit" | "reset";
 	children: ReactNode;
+	disabled: boolean;
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
 	// Ви можете додати сюди інші властивості, або використовувати `...otherProps` для додаткових властивостей
 }
@@ -15,6 +16,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 	loading = false,
 	type = "button",
 	children,
+	disabled,
 	onClick,
 	...otherProps
 }) => {
@@ -34,6 +36,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 			endDecorator={loading ? <SendIcon /> : null}
 			variant="solid"
 			onClick={handleClick}
+			disabled={disabled}
 			sx={{
 				bgcolor: `${theme.colors.secondBackGround}`,
 				color: `${theme.colors.brightTxt}`,

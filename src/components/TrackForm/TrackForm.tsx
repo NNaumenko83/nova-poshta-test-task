@@ -10,7 +10,7 @@ export const TrackForm: React.FC = () => {
 	const dispatch = useAppDispatch();
 
 	const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-		const value = e.target.value.replace(/[^\d]/g, "").slice(0, 14);
+		const value = e.target.value.trim().replace(/[^\d]/g, "").slice(0, 14);
 		setTtnNumber(value);
 	};
 
@@ -24,7 +24,9 @@ export const TrackForm: React.FC = () => {
 			<Form onSubmit={handleSubmit}>
 				<FocusOutlineInput value={ttnNumber} onChange={handleChange} placeholder="Введіть номер ТТН" />
 
-				<ButtonStyled type="submit">Пошук</ButtonStyled>
+				<ButtonStyled type="submit" disabled={ttnNumber.length !== 14}>
+					Пошук
+				</ButtonStyled>
 			</Form>
 		</FormWrapper>
 	);

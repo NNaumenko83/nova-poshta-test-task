@@ -1,13 +1,20 @@
 import { configureStore } from "@reduxjs/toolkit";
-import trackSlice from "./trackSlice";
+import { persistedTracksReducer } from "./trackSlice";
+import { persistStore, FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER } from "redux-persist";
 
-const store = configureStore({
+export const store = configureStore({
 	reducer: {
-		tracks: trackSlice,
+		tracks: persistedTracksReducer,
 	},
+	middleware: getDefaultMiddleware =>
+		getDefaultMiddleware({
+			serializableCheck: {
+				ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+			},
+		}),
 });
 
-export default store;
+export const persistor = persistStore(store);
 
 export type RootState = ReturnType<typeof store.getState>;
 

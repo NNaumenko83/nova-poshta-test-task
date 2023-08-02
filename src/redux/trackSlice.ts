@@ -1,6 +1,8 @@
 import { createSlice, PayloadAction, AnyAction } from "@reduxjs/toolkit";
 import { Track } from "../Types/Track";
 import { getTrack } from "./operations";
+import { persistReducer } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 
 type TracksState = {
 	list: Track[];
@@ -54,7 +56,16 @@ const trackSlice = createSlice({
 
 // export const { todoAdded, toggleComplete, removeTodo } = todoSlice.actions;
 
-export default trackSlice.reducer;
+const persistConfig = {
+	key: "tracks",
+	storage,
+};
+
+// export const { setStatusFilter } = filtersSlice.actions;
+
+const tracksReducer = trackSlice.reducer;
+
+export const persistedTracksReducer = persistReducer(persistConfig, tracksReducer);
 
 function isError(action: AnyAction) {
 	return action.type.endsWith("rejected");
