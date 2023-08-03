@@ -44,14 +44,12 @@ const trackSlice = createSlice({
 				state.error = null;
 			})
 			.addCase(getTrack.fulfilled, (state, action) => {
-				if (
-					state.list.find(item => {
-						return item.number === action.payload.number;
-					})
-				) {
-					return state;
-				}
-				state.list = [action.payload, ...state.list];
+				console.log("action:", action.payload);
+				const trackIndex = state.list.findIndex(item => {
+					return item.number === action.payload.number;
+				});
+
+				state.list[trackIndex] = action.payload;
 				state.loading = false;
 			})
 			.addMatcher(isError, (state, action: PayloadAction<string>) => {

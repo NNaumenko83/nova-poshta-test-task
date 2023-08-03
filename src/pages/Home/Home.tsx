@@ -3,14 +3,21 @@ import { Sidebar } from "../../components/SideBar/Sidebar";
 import { TrackForm } from "../../components/TrackForm/TrackForm";
 import { TrackInfo } from "../../components/TrackInfo/TrackInfo";
 import { HomeContainer } from "./Home.styled";
+import { useState } from "react";
 
 export const Home = () => {
+	const [trackNumber, setTrackNumber] = useState("");
+
+	const changeTrackNumberHandler = (track: string) => {
+		setTrackNumber(track);
+	};
+
 	return (
 		<Main>
 			<HomeContainer>
-				<TrackForm />
+				<TrackForm trackNumber={trackNumber} changeTrackNumberHandler={changeTrackNumberHandler} />
 				<TrackInfo />
-				<Sidebar />
+				<Sidebar changeTrackNumberHandler={changeTrackNumberHandler} />
 			</HomeContainer>
 		</Main>
 	);

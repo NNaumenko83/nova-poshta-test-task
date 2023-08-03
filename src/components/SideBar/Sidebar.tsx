@@ -2,15 +2,15 @@
 import React from "react";
 import { TrackList } from "../TracksList/TrackList";
 
-// interface SidebarProps {
-// 	trackingNumbers: string[];
-// }
+interface ISidebarProps {
+	changeTrackNumberHandler: (track: string) => void;
+}
 
-export const Sidebar: React.FC = () => {
+export const Sidebar: React.FC<ISidebarProps> = props => {
 	return (
 		<aside>
 			<h2>Історія</h2>
-			<TrackList />
+			<TrackList {...props} />
 		</aside>
 	);
 };
