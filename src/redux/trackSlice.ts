@@ -48,8 +48,11 @@ const trackSlice = createSlice({
 				const trackIndex = state.list.findIndex(item => {
 					return item.number === action.payload.number;
 				});
-
-				state.list[trackIndex] = action.payload;
+				if (trackIndex !== -1) {
+					state.list[trackIndex] = action.payload;
+				} else {
+					state.list.unshift(action.payload);
+				}
 				state.loading = false;
 			})
 			.addMatcher(isError, (state, action: PayloadAction<string>) => {

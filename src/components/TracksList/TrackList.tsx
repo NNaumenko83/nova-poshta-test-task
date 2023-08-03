@@ -7,7 +7,6 @@ interface ITrackListProps {
 
 export const TrackList: React.FC<ITrackListProps> = props => {
 	const tracksList = useAppSelector(state => state.tracks.list);
-	console.log("tracksList:", tracksList);
 
 	return (
 		<ul>
