@@ -8,6 +8,7 @@ const theme = {
 		thirdBacgroundCOlor: "#df6513",
 		darkText: "#000000",
 		brightTxt: "#ffffff",
+		borderNonActive: "#e2e2e2",
 	},
 
 	fontSizes: {

@@ -1,5 +1,9 @@
 import { styled } from "styled-components";
 
 export const List = styled.ul`
-	border: 1px solid orange;
+	display: flex;
+	gap: 5px;
+	flex-direction: column;
+
+	width: 100%;
 `;

@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppDispatch } from "../../hooks/reduxHooks";
 import { getTrack } from "../../redux/operations";
+import { ListItem } from "./TrackItem.styled";
 
 interface ITrackProps {
 	number: string;
@@ -16,5 +17,5 @@ export const TrackItem: React.FC<ITrackProps> = ({ number, changeTrackNumberHand
 		dispatch(getTrack(number));
 	};
 
-	return <div onClick={onTrackItemClick}>{number}</div>;
+	return <ListItem onClick={onTrackItemClick}>{number}</ListItem>;
 };

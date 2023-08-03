@@ -16,6 +16,3 @@ export const SideBarStyled = styled.aside`
 		grid-area: 2 / 2/ 3 /3;
 	}
 `;
-
-// export const HisrotyTitle = styled.h2`
-// `;
