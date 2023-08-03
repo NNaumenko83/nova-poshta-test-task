@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 
 export const ListItem = styled.li`
-	width: 100%;
+	width: calc(100% - 50px);
 	padding: 5px;
 	text-align: center;
 

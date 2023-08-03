@@ -9,7 +9,7 @@ export const SideBarStyled = styled.aside`
 
 	padding: 10px;
 
-	border: 3px solid red;
+	border: 2px solid ${props => props.theme.colors.borderComponents};
 	border-radius: 20px;
 
 	@media screen and (min-width: 768px) {
@@ -28,7 +28,7 @@ export const TitleButtonWrapper = styled.div`
 
 export const BrushButton = styled.button`
 	position: absolute;
-	right: 15px;
+	right: 30px;
 
 	width: 30px;
 	height: 30px;

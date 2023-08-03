@@ -20,12 +20,9 @@ const trackSlice = createSlice({
 	name: "tracks",
 	initialState,
 	reducers: {
-		// todoAdded(state, action: PayloadAction<string>) {
-		// 	state.list.push({
-		// 		id: new Date().toString(),
-		// 		title: action.payload,
-		// 		completed: false,
-		// 	});
+		deleteTracks(state) {
+			state.list = [];
+		},
 		// },
 		// toggleComplete(state, action: PayloadAction<string>) {
 		// 	const toggledTodo = state.list.find(todo => todo.id === action.payload);
@@ -62,7 +59,7 @@ const trackSlice = createSlice({
 	},
 });
 
-// export const { todoAdded, toggleComplete, removeTodo } = todoSlice.actions;
+export const { deleteTracks } = trackSlice.actions;
 
 const persistConfig = {
 	key: "tracks",

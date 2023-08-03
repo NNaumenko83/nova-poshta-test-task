@@ -6,10 +6,11 @@ export const HomeContainer = styled.div`
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 80px 1fr 3fr;
+	grid-template-rows: 80px 80px 4fr;
+	grid-gap: 5px;
 
 	@media screen and (min-width: 768px) {
-		grid-template-columns: 3fr 1fr;
+		grid-template-columns: 3fr 2fr;
 		grid-template-rows: 80px 1fr;
 	}
 `;

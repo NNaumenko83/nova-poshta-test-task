@@ -9,6 +9,7 @@ const theme = {
 		darkText: "#000000",
 		brightTxt: "#ffffff",
 		borderNonActive: "#e2e2e2",
+		borderComponents: "#df012e",
 	},
 
 	fontSizes: {
