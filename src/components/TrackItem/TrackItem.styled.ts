@@ -10,7 +10,7 @@ export const ListItem = styled.li`
 	cursor: pointer;
 
 	font-size: ${props => props.theme.fontSizes.xsmall};
-	transition: transform 250ms linear;
+	transition: transform 150ms linear;
 
 	&:hover {
 		border-color: ${props => props.theme.colors.secondBackGround};

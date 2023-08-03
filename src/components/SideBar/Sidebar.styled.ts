@@ -16,3 +16,28 @@ export const SideBarStyled = styled.aside`
 		grid-area: 2 / 2/ 3 /3;
 	}
 `;
+
+export const TitleButtonWrapper = styled.div`
+	position: relative;
+	display: flex;
+	gap: 10px;
+	justify-content: center;
+
+	width: 100%;
+`;
+
+export const BrushButton = styled.button`
+	position: absolute;
+	right: 15px;
+
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: ${props => props.theme.colors.mainBackGround};
+	transition: color 200ms linear;
+
+	&:hover,
+	&:focus {
+		color: ${props => props.theme.colors.secondBackGround};
+	}
+`;
