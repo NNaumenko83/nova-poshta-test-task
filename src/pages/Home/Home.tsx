@@ -16,7 +16,7 @@ export const Home = () => {
 		<Main>
 			<HomeContainer>
 				<TrackForm trackNumber={trackNumber} changeTrackNumberHandler={changeTrackNumberHandler} />
-				<TrackInfo />
+				<TrackInfo trackNumber={trackNumber} />
 				<Sidebar changeTrackNumberHandler={changeTrackNumberHandler} />
 			</HomeContainer>
 		</Main>

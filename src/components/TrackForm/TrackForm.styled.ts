@@ -5,7 +5,8 @@ export const FormWrapper = styled.div`
 	align-items: center;
 	justify-content: center;
 
-	border: 1px solid green;
+	border: 2px solid ${props => props.theme.colors.borderComponents};
+	border-radius: 20px;
 
 	@media screen and (min-width: 768px) {
 		grid-area: 1 / 1 / 2 / 3;
