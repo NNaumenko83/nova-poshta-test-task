@@ -50,7 +50,7 @@ export const Warehouses = () => {
 			<h1>Warehouses</h1>
 			{isLoading && <h2>LOADING....</h2>}
 			{error && <h2>ERROR....</h2>}
-			{warehousesTypes.length > 0 && <UnstyledSelectControlled warehousesTypes={warehousesTypes} />}
+			<UnstyledSelectControlled warehousesTypes={warehousesTypes} />
 			<FocusOutlineInput value={value} onChange={onChange} placeholder="Введіть місто" />
 		</Main>
 	);

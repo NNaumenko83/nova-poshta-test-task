@@ -11,13 +11,14 @@ interface IUnstyledSelectControlledProps {
 
 export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> = ({ warehousesTypes }) => {
 	console.log("warehouses:", warehousesTypes);
-	const [value, setValue] = React.useState<number | null>(10);
+	const [value, setValue] = React.useState<string | null>("");
 	return (
 		<div>
 			<CustomSelect value={value} onChange={(_, newValue) => setValue(newValue)}>
-				<StyledOption value={10}>Ten</StyledOption>
-				<StyledOption value={20}>Twenty</StyledOption>
-				<StyledOption value={30}>Thirty</StyledOption>
+				<StyledOption value={""}>Всі</StyledOption>
+				{warehousesTypes.map(item => (
+					<StyledOption value={item.Ref}>{item.Description}</StyledOption>
+				))}
 			</CustomSelect>
 
 			<Paragraph>Selected value: {value}</Paragraph>
@@ -25,8 +26,8 @@ export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> 
 	);
 };
 
-function CustomSelect(props: SelectProps<number, false>) {
-	const slots: SelectProps<number, false>["slots"] = {
+function CustomSelect(props: SelectProps<string, false>) {
+	const slots: SelectProps<string, false>["slots"] = {
 		root: StyledButton,
 		listbox: StyledListbox,
 		popper: StyledPopper,
