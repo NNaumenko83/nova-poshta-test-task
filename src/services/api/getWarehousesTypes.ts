@@ -9,12 +9,9 @@ const body = {
 };
 
 const getWarehousesTypes = async () => {
-	try {
-		const response = await axios.post("", body);
-		console.log("response:", response);
-	} catch (error) {
-		console.log("error:", error);
-	}
+	const response = await axios.post("", body);
+	console.log("response:", response);
+	return response.data.data;
 };
 
 export default getWarehousesTypes;
