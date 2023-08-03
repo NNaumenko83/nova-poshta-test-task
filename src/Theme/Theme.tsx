@@ -10,6 +10,7 @@ const theme = {
 		brightTxt: "#ffffff",
 		borderNonActive: "#e2e2e2",
 		borderComponents: "#df012e",
+		footerLinkSecondColor: "#fad524",
 	},
 
 	fontSizes: {
@@ -20,7 +21,7 @@ const theme = {
 		xlarge: "4.5",
 	},
 	fontWeights: {
-		light: 100,
+		light: 500,
 		normal: 300,
 		bold: 700,
 	},

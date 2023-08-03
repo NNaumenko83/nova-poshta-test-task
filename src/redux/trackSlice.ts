@@ -23,16 +23,6 @@ const trackSlice = createSlice({
 		deleteTracks(state) {
 			state.list = [];
 		},
-		// },
-		// toggleComplete(state, action: PayloadAction<string>) {
-		// 	const toggledTodo = state.list.find(todo => todo.id === action.payload);
-		// 	if (toggledTodo) {
-		// 		toggledTodo.completed = !toggledTodo.completed;
-		// 	}
-		// },
-		// removeTodo(state, action: PayloadAction<string>) {
-		// 	state.list = state.list.filter(todo => todo.id !== action.payload);
-		// },
 	},
 	extraReducers: builder => {
 		builder
@@ -65,8 +55,6 @@ const persistConfig = {
 	key: "tracks",
 	storage,
 };
-
-// export const { setStatusFilter } = filtersSlice.actions;
 
 const tracksReducer = trackSlice.reducer;
 
