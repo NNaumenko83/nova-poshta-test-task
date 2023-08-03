@@ -5,11 +5,14 @@ import FocusOutlineInput from "../../components/Input/Input";
 import { Main } from "../../components/Main/Main";
 import getWarehousesTypes from "../../services/api/getWarehousesTypes";
 import { TWarehouse } from "../../Types/WarehouseType";
+import { getErrorMessage } from "../../utils/getErrorMessage";
+import { UnstyledSelectControlled } from "../../components/Select/Select";
 
 export const Warehouses = () => {
 	const [value, setValue] = useState("");
 	const [error, setError] = useState("");
-	const [warehousesTypes, setWarehousesTypes] = useState<TWarehouse[]>();
+	const [isLoading, setIsLoading] = useState(false);
+	const [warehousesTypes, setWarehousesTypes] = useState<TWarehouse[]>([]);
 	console.log("warehousesTypes:", warehousesTypes);
 
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
@@ -29,12 +32,15 @@ export const Warehouses = () => {
 
 	useEffect(() => {
 		(async () => {
+			setIsLoading(true);
 			try {
 				const data = await getWarehousesTypes();
 				console.log("data:", data);
 				setWarehousesTypes(data);
 			} catch (error) {
-				setError(error.message);
+				setError(getErrorMessage(error));
+			} finally {
+				setIsLoading(false);
 			}
 		})();
 	}, []);
@@ -42,6 +48,9 @@ export const Warehouses = () => {
 	return (
 		<Main>
 			<h1>Warehouses</h1>
+			{isLoading && <h2>LOADING....</h2>}
+			{error && <h2>ERROR....</h2>}
+			{warehousesTypes.length > 0 && <UnstyledSelectControlled warehousesTypes={warehousesTypes} />}
 			<FocusOutlineInput value={value} onChange={onChange} placeholder="Введіть місто" />
 		</Main>
 	);
