@@ -1,5 +1,5 @@
 import { useAppSelector } from "../../hooks/reduxHooks";
-import { TrackInfoStyled } from "./TrackInfo.styled";
+import { InfoWrapper, TrackInfoStyled, InfoLabel } from "./TrackInfo.styled";
 
 interface ITrackInfoProps {
 	trackNumber: string;
@@ -7,31 +7,30 @@ interface ITrackInfoProps {
 
 export const TrackInfo: React.FC<ITrackInfoProps> = ({ trackNumber }) => {
 	const track = useAppSelector(state => state.tracks.list);
-	console.log("track:", track);
 
 	const findTrack = track.find(item => item.number === trackNumber);
 
 	return (
 		<TrackInfoStyled>
 			{findTrack && (
-				<div style={{ backgroundColor: "tomato" }}>
-					<p>
-						<span>Статус доставки:</span>
+				<InfoWrapper>
+					<div>
+						<InfoLabel>Статус доставки:</InfoLabel>
 						<span>{findTrack.status}</span>
-					</p>
+					</div>
 					{findTrack.warehouseSender && (
-						<p>
-							<span>Відправлено:</span>
-							<span>{findTrack.warehouseRecipient}</span>
-						</p>
+						<div>
+							<InfoLabel>Відправлено:</InfoLabel>
+							<span>{findTrack.warehouseSender}</span>
+						</div>
 					)}
 					{findTrack.warehouseRecipient && (
-						<p>
-							<span>Отримано:</span>
+						<div>
+							<InfoLabel>Отримано:</InfoLabel>
 							<span>{findTrack.warehouseRecipient}</span>
-						</p>
+						</div>
 					)}
-				</div>
+				</InfoWrapper>
 			)}
 		</TrackInfoStyled>
 	);

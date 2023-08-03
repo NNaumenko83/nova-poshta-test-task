@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 
 export const HomeContainer = styled.div`
-	border: 1px solid red;
+	/* border: 1px solid red; */
 	min-height: 100%;
 
 	display: grid;
 	grid-template-columns: 1fr;
-	grid-template-rows: 80px 80px 4fr;
+	grid-template-rows: 80px 2fr 4fr;
 	grid-gap: 5px;
 
 	@media screen and (min-width: 768px) {

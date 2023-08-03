@@ -22,7 +22,7 @@ const theme = {
 	fontWeights: {
 		light: 100,
 		normal: 300,
-		bold: 500,
+		bold: 700,
 	},
 };
 
