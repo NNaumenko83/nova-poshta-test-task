@@ -1,1 +1,2 @@
-export { default } from "./getWarehousesTypes";
+export * from "./getWarehousesTypes";
+export * from "./getCitiesByName";

@@ -8,10 +8,7 @@ const body = {
 	methodProperties: {},
 };
 
-const getWarehousesTypes = async () => {
+export const getWarehousesTypes = async () => {
 	const response = await axios.post("", body);
-	console.log("response:", response);
 	return response.data.data;
 };
-
-export default getWarehousesTypes;
