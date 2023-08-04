@@ -15,6 +15,7 @@ export const Warehouses = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [warehousesTypes, setWarehousesTypes] = useState<TWarehouse[]>([]);
 	const [cities, setCities] = useState<ICities>({ Addresses: [], TotalCount: 0 });
+	const [choosedCity, setChoosedCity] = useState("");
 
 	const debouncedGetCities = useDebouncedCallback(async city => {
 		setIsLoading(true);
@@ -24,13 +25,15 @@ export const Warehouses = () => {
 
 			setCities(results);
 		} catch (error) {
-			console.error("Error while fetching cities:", error);
+			setError(getErrorMessage(error));
 		} finally {
 			setIsLoading(false);
 		}
 	}, 1000);
 
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+		setChoosedCity("");
+		setError("");
 		setCityName(e.target.value);
 		debouncedGetCities(e.target.value);
 	};
@@ -49,20 +52,27 @@ export const Warehouses = () => {
 		})();
 	}, []);
 
+	const handleCityClick = (id: string) => {
+		console.log(id);
+		setChoosedCity(id);
+	};
+
 	return (
 		<Main>
 			<FocusOutlineInput value={cityName} onChange={onChange} placeholder="Введіть місто" />
-			<UnstyledSelectControlled warehousesTypes={warehousesTypes} />
-			<h1>Warehouses</h1>
+			{choosedCity && <UnstyledSelectControlled warehousesTypes={warehousesTypes} />}
 			{isLoading && <h2>LOADING....</h2>}
-			{error && <h2>ERROR....</h2>}
+			{error && <h2>{error}</h2>}
 			{cities.Addresses.length > 0 && (
 				<ul>
 					{cities.Addresses.map(item => (
-						<li key={item.DeliveryCity}>{item.Present}</li>
+						<li key={item.DeliveryCity} onClick={() => handleCityClick(item.DeliveryCity)}>
+							{item.Present}{" "}
+						</li>
 					))}
 				</ul>
 			)}
+			{choosedCity && <h1>{choosedCity}</h1>}
 		</Main>
 	);
 };
