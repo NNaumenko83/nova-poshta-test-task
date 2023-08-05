@@ -11,6 +11,7 @@ interface IUnstyledSelectControlledProps {
 export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> = ({ warehousesTypes }) => {
 	console.log("warehouses:", warehousesTypes);
 	const [value, setValue] = React.useState<string | null>("");
+
 	return (
 		<div>
 			<CustomSelect value={value} onChange={(_, newValue) => setValue(newValue)}>
