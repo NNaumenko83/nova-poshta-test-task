@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import FocusOutlineInput from "../../components/Input/Input";
 import { Main } from "../../components/Main/Main";
