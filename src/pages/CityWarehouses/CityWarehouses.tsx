@@ -79,7 +79,7 @@ export const СityWarehouses = () => {
 			)}
 			{warehouses.length > 0 &&
 				warehouses.map(item => (
-					<div>
+					<div key={item.Ref}>
 						<Link to={`/warehouses/${item.CityRef}/${item.Ref}`}>{item.Description}</Link>{" "}
 					</div>
 				))}
