@@ -5,6 +5,7 @@ import { Warehouses } from "./pages/Warehouses/Warehouses";
 import { СityWarehouses } from "./pages/CityWarehouses/CityWarehouses";
 
 import Theme from "./Theme/Theme";
+import { WarehousesDetails } from "./pages/WarehouseDetails/WarehouseDetails";
 
 function App() {
 	return (
@@ -14,7 +15,7 @@ function App() {
 					<Route index element={<Home />} />
 					<Route path="warehouses" element={<Warehouses />} />
 					<Route path="warehouses/:city" element={<СityWarehouses />} />
-					{/* <Route path="/warehouses/:id" element={<WarehousesDetails />} /> */}
+					<Route path="warehouses/:city/:id" element={<WarehousesDetails />} />
 				</Route>
 			</Routes>
 		</Theme>

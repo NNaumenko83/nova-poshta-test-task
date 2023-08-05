@@ -9,6 +9,7 @@ const body = {
 };
 
 export const getWarehousesTypes = async () => {
+	console.log("getWarehousesTypes:");
 	const response = await axios.post("", body);
 	return response.data.data;
 };

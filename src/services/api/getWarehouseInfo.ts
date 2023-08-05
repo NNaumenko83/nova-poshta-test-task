@@ -1,15 +1,13 @@
 import { API_KEY } from "../../constans/constans";
 import axios from "axios";
 
-export const getCitiesByName = async (city: string) => {
+export const getWarehouseInfo = async (ref: string) => {
 	const body = {
 		apiKey: API_KEY,
 		modelName: "Address",
-		calledMethod: "searchSettlements",
+		calledMethod: "getWarehouses",
 		methodProperties: {
-			CityName: city,
-			Limit: "50",
-			Page: "1",
+			Ref: ref,
 		},
 	};
 
