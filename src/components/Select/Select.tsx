@@ -6,16 +6,26 @@ import { Paragraph, StyledButton, StyledListbox, StyledOption, StyledPopper } fr
 
 interface IUnstyledSelectControlledProps {
 	warehousesTypes: TWarehouse[];
+	onChangeType: (type: string | null) => void;
+	value: string | null;
 }
 
-export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> = ({ warehousesTypes }) => {
-	console.log("warehouses:", warehousesTypes);
-	const [value, setValue] = React.useState<string | null>("");
-
+export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> = ({
+	warehousesTypes,
+	onChangeType,
+	value,
+}) => {
+	console.log("value:", value);
+	console.log("warehousesTypes:", warehousesTypes);
 	return (
 		<div>
-			<CustomSelect value={value} onChange={(_, newValue) => setValue(newValue)}>
-				<StyledOption value={""}>Всі</StyledOption>
+			<CustomSelect
+				value={value}
+				onChange={(_, newValue) => {
+					onChangeType(newValue);
+				}}
+			>
+				<StyledOption value={"all"}>Всі</StyledOption>
 				{warehousesTypes.map(item => (
 					<StyledOption key={item.Ref} value={item.Ref}>
 						{item.Description}
