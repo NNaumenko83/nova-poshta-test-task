@@ -15,7 +15,7 @@ function App() {
 					<Route index element={<Home />} />
 					<Route path="warehouses" element={<Warehouses />} />
 					<Route path="warehouses/:city" element={<СityWarehouses />} />
-					<Route path="warehouses/:city/:id" element={<WarehousesDetails />} />
+					<Route path="warehouses/:city/:ref" element={<WarehousesDetails />} />
 				</Route>
 			</Routes>
 		</Theme>
