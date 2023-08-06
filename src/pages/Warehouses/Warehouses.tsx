@@ -56,13 +56,13 @@ export const Warehouses = () => {
 				)}
 				{error && <h2>{error}</h2>}
 				{cities.Addresses.length > 0 && !isLoading && (
-					<WarehousesListWrapper>
+					<CityListWrapper>
 						{cities.Addresses.map(item => (
 							<div key={item.DeliveryCity}>
 								<Link to={`/warehouses/${item.DeliveryCity}`}>{item.Present}</Link>
 							</div>
 						))}
-					</WarehousesListWrapper>
+					</CityListWrapper>
 				)}
 			</WarehousesWrapper>
 		</Main>
