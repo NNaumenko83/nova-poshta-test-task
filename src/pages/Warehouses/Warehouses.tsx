@@ -9,7 +9,8 @@ import { Main } from "../../components/Main/Main";
 import { getCitiesByName } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { ICities } from "../../Types/CitiesTypes";
-import { WarehousesListWrapper, WarehousesWrapper } from "./Warehouses.styled";
+import { CitiesListWrapper, WarehousesWrapper } from "./Warehouses.styled";
+import { CitiesList } from "../../components/CitiesList/CitiesList";
 
 export const Warehouses = () => {
 	const [cityName, setCityName] = useState("");
@@ -56,13 +57,9 @@ export const Warehouses = () => {
 				)}
 				{error && <h2>{error}</h2>}
 				{cities.Addresses.length > 0 && !isLoading && (
-					<CityListWrapper>
-						{cities.Addresses.map(item => (
-							<div key={item.DeliveryCity}>
-								<Link to={`/warehouses/${item.DeliveryCity}`}>{item.Present}</Link>
-							</div>
-						))}
-					</CityListWrapper>
+					<CitiesListWrapper>
+						<CitiesList cities={cities} />
+					</CitiesListWrapper>
 				)}
 			</WarehousesWrapper>
 		</Main>

@@ -10,7 +10,7 @@ export const WarehousesWrapper = styled.div`
 	margin-top: 10px;
 `;
 
-export const CityListWrapper = styled.div`
+export const CitiesListWrapper = styled.div`
 	height: 100%;
 	font-size: ${props => props.theme.fontSizes.xsmall};
 	overflow: auto;
