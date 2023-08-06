@@ -5,7 +5,7 @@ export const ContainerStyled = styled.div`
 	padding: 5px 5px;
 	min-width: 320px;
 	height: 100%;
-	/* outline: 1px solid green; */
+	outline: 1px solid green;
 
 	@media screen and (min-width: 320px) {
 		width: 320px;

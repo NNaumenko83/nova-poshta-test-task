@@ -8,6 +8,7 @@ import { TWarehouse } from "../../Types/WarehouseType";
 import { getWarehousesInCity, getWarehousesTypes } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import FocusOutlineInput from "../../components/Input/Input";
+import { IputsWrapper } from "./CityWarehouses.styled";
 
 interface IWarehouse {
 	CityRef: string;
@@ -101,10 +102,10 @@ export const СityWarehouses = () => {
 		<Main>
 			<h1>Warehouses in city {city}</h1>
 			{warehousesTypes.length > 0 && (
-				<>
+				<IputsWrapper>
 					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
 					<FocusOutlineInput value={number} onChange={onChange} placeholder="Введіть номер" />
-				</>
+				</IputsWrapper>
 			)}
 			{warehouses.length > 0 &&
 				warehouses.map(item => (
