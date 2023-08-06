@@ -8,12 +8,18 @@ import { TWarehouse } from "../../Types/WarehouseType";
 import { getWarehousesInCity, getWarehousesTypes } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 
+interface IWarehouse {
+	CityRef: string;
+	Description: string;
+	Ref: string;
+}
+
 export const СityWarehouses = () => {
 	const [warehousesTypes, setWarehousesTypes] = useState<TWarehouse[]>([]);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
-	const [warehouses, setWarehouses] = useState([]);
+	const [warehouses, setWarehouses] = useState<IWarehouse[]>([]);
 	console.log("warehouses:", warehouses);
 
 	const type = searchParams.get("type");
