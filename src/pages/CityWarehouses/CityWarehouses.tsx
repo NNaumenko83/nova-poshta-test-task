@@ -104,7 +104,7 @@ export const СityWarehouses = () => {
 			{warehousesTypes.length > 0 && (
 				<IputsWrapper>
 					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
-					<FocusOutlineInput value={number} onChange={onChange} placeholder="Введіть номер" />
+					<FocusOutlineInput value={number} onChange={onChange} placeholder="Номер віділення" />
 				</IputsWrapper>
 			)}
 			{warehouses.length > 0 &&

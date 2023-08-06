@@ -2,11 +2,14 @@ import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { Link } from "react-router-dom";
 
+import { MutatingDots } from "react-loader-spinner";
+
 import FocusOutlineInput from "../../components/Input/Input";
 import { Main } from "../../components/Main/Main";
 import { getCitiesByName } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { ICities } from "../../Types/CitiesTypes";
+import { WarehousesListWrapper, WarehousesWrapper } from "./Warehouses.styled";
 
 export const Warehouses = () => {
 	const [cityName, setCityName] = useState("");
@@ -37,17 +40,31 @@ export const Warehouses = () => {
 	return (
 		<Main>
 			<FocusOutlineInput value={cityName} onChange={onChange} placeholder="Введіть місто" />
-			{isLoading && <h2>LOADING....</h2>}
-			{error && <h2>{error}</h2>}
-			{cities.Addresses.length > 0 && (
-				<div>
-					{cities.Addresses.map(item => (
-						<div key={item.DeliveryCity}>
-							<Link to={`/warehouses/${item.DeliveryCity}`}>{item.Present}</Link>
-						</div>
-					))}
-				</div>
-			)}
+			<WarehousesWrapper>
+				{isLoading && (
+					<MutatingDots
+						height="100"
+						width="100"
+						color="#df012e"
+						secondaryColor="#df012e"
+						radius="12.5"
+						ariaLabel="mutating-dots-loading"
+						wrapperStyle={{}}
+						wrapperClass=""
+						visible={true}
+					/>
+				)}
+				{error && <h2>{error}</h2>}
+				{cities.Addresses.length > 0 && !isLoading && (
+					<WarehousesListWrapper>
+						{cities.Addresses.map(item => (
+							<div key={item.DeliveryCity}>
+								<Link to={`/warehouses/${item.DeliveryCity}`}>{item.Present}</Link>
+							</div>
+						))}
+					</WarehousesListWrapper>
+				)}
+			</WarehousesWrapper>
 		</Main>
 	);
 };

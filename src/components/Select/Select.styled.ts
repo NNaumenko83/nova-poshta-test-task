@@ -30,7 +30,7 @@ export const StyledButton = styled("button")(
   font-family: IBM Plex Sans, sans-serif;
   font-size: 0.875rem;
   box-sizing: border-box;
-  min-width: 280px;
+  min-width: 230px;
   padding: 8px 12px;
   border-radius: 8px;
   text-align: left;
@@ -73,8 +73,8 @@ export const StyledListbox = styled("ul")(
   font-size: 0.875rem;
   box-sizing: border-box;
   padding: 6px;
-  margin: 12px 0;
-  min-width: 280px;
+  margin: 2px 0;
+  min-width: 230px;
   border-radius: 12px;
   overflow: auto;
   outline: 0px;
@@ -125,12 +125,3 @@ export const StyledOption = styled(Option)(
 export const StyledPopper = styled(Popper)`
 	z-index: 1;
 `;
-
-export const Paragraph = styled("p")(
-	({ theme }) => `
-  font-family: IBM Plex Sans, sans-serif;
-  font-size: 0.875rem;
-  margin: 10px 0;
-  color: ${theme.palette.mode === "dark" ? grey[400] : grey[700]};
-  `,
-);

@@ -2,7 +2,7 @@ import * as React from "react";
 import Select, { SelectProps } from "@mui/base/Select";
 
 import { TWarehouse } from "../../Types/WarehouseType";
-import { Paragraph, StyledButton, StyledListbox, StyledOption, StyledPopper } from "./Select.styled";
+import { StyledButton, StyledListbox, StyledOption, StyledPopper } from "./Select.styled";
 
 interface IUnstyledSelectControlledProps {
 	warehousesTypes: TWarehouse[];
@@ -32,8 +32,6 @@ export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> 
 					</StyledOption>
 				))}
 			</CustomSelect>
-
-			<Paragraph>Selected value: {value}</Paragraph>
 		</div>
 	);
 };

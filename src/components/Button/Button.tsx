@@ -40,9 +40,10 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 			sx={{
 				bgcolor: `${theme.colors.secondBackGround}`,
 				color: `${theme.colors.brightTxt}`,
+				padding: "2px",
 
-				width: "100px",
-				height: "40px",
+				width: "70px",
+				height: "50px",
 				fontSize: "15px",
 				transition: "all 250ms linear",
 				":hover": {
