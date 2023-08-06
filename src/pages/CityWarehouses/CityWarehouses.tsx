@@ -7,6 +7,7 @@ import { useEffect, useState } from "react";
 import { TWarehouse } from "../../Types/WarehouseType";
 import { getWarehousesInCity, getWarehousesTypes } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
+import FocusOutlineInput from "../../components/Input/Input";
 
 interface IWarehouse {
 	CityRef: string;
@@ -20,6 +21,7 @@ export const СityWarehouses = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [warehouses, setWarehouses] = useState<IWarehouse[]>([]);
+	const [numberWarehouse, setnumberWarehouse] = useState("");
 	console.log("warehouses:", warehouses);
 
 	const type = searchParams.get("type");
@@ -33,6 +35,12 @@ export const СityWarehouses = () => {
 			params.append("type", type);
 		}
 		setSearchParams(params);
+	};
+
+	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+		setError("");
+		setnumberWarehouse(e.target.value);
+		// debouncedGetCities(e.target.value);
 	};
 
 	useEffect(() => {
@@ -81,7 +89,10 @@ export const СityWarehouses = () => {
 		<Main>
 			<h1>Warehouses in city {city}</h1>
 			{warehousesTypes.length > 0 && (
-				<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
+				<>
+					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
+					<FocusOutlineInput value={numberWarehouse} onChange={onChange} placeholder="Введіть номер" />
+				</>
 			)}
 			{warehouses.length > 0 &&
 				warehouses.map(item => (
