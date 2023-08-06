@@ -21,33 +21,45 @@ export const СityWarehouses = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [warehouses, setWarehouses] = useState<IWarehouse[]>([]);
-	const [numberWarehouse, setnumberWarehouse] = useState("");
+
 	console.log("warehouses:", warehouses);
 
 	const type = searchParams.get("type");
+	console.log("type:", type);
+	const number = searchParams.get("number");
+	console.log("number:", number);
 
 	const { city } = useParams();
 
 	const onChangeType = (type: string | null) => {
 		const params = new URLSearchParams();
 
-		if (type !== null) {
+		if (type !== null && number !== null) {
 			params.append("type", type);
+			params.append("number", number);
 		}
 		setSearchParams(params);
 	};
 
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
 		setError("");
-		setnumberWarehouse(e.target.value);
-		// debouncedGetCities(e.target.value);
+		const params = new URLSearchParams();
+
+		const newType = type !== null ? type : "all"; // Handle null or undefined type
+		params.append("type", newType);
+
+		const newNumber = e.target.value.trim() !== "" ? e.target.value : ""; // Handle empty number
+		params.append("number", newNumber);
+
+		setSearchParams(params);
 	};
 
 	useEffect(() => {
-		if (!type) {
-			setSearchParams({ type: "all" });
+		if (!type && !number) {
+			console.log("Перший рендер");
+			setSearchParams({ type: "all", number: "" });
 		} else {
-			setSearchParams({ type });
+			setSearchParams({ type, number });
 		}
 
 		const fetchWarehousesType = async () => {
@@ -91,7 +103,7 @@ export const СityWarehouses = () => {
 			{warehousesTypes.length > 0 && (
 				<>
 					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
-					<FocusOutlineInput value={numberWarehouse} onChange={onChange} placeholder="Введіть номер" />
+					<FocusOutlineInput value={number} onChange={onChange} placeholder="Введіть номер" />
 				</>
 			)}
 			{warehouses.length > 0 &&
