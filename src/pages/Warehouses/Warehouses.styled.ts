@@ -11,7 +11,10 @@ export const WarehousesWrapper = styled.div`
 `;
 
 export const CitiesListWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	gap: 5px;
 	height: 100%;
-	font-size: ${props => props.theme.fontSizes.xsmall};
+	font-size: ${props => props.theme.fontSizes.xssmall};
 	overflow: auto;
 `;

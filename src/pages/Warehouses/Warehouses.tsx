@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-import { Link } from "react-router-dom";
 
 import { MutatingDots } from "react-loader-spinner";
 
@@ -56,9 +55,10 @@ export const Warehouses = () => {
 					/>
 				)}
 				{error && <h2>{error}</h2>}
-				{cities.Addresses.length > 0 && !isLoading && (
+				{cities.Addresses.length > 0 && !isLoading && !error && (
 					<CitiesListWrapper>
 						<CitiesList cities={cities} />
+						<button>Більше...</button>
 					</CitiesListWrapper>
 				)}
 			</WarehousesWrapper>
