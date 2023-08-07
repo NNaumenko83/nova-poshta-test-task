@@ -32,8 +32,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 		<Button
 			type={type}
 			loading={loading}
-			loadingPosition="end"
-			endDecorator={loading ? <SendIcon /> : null}
+			loadingPosition="center"
 			variant="solid"
 			onClick={handleClick}
 			disabled={disabled}
@@ -41,6 +40,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 				bgcolor: `${theme.colors.secondBackGround}`,
 				color: `${theme.colors.brightTxt}`,
 				padding: "2px",
+				margin: " 0 auto",
 
 				width: "70px",
 				height: "50px",
