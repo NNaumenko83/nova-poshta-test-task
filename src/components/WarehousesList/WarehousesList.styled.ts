@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const WarehousesListStyled = styled.ul`
+export const WarehousesListStyled = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 5px;

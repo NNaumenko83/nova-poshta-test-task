@@ -19,7 +19,7 @@ export const getWarehousesInCity = async (type: string | null, city: string | un
 	};
 
 	const response = await axios.post("", body);
-	console.log("response:", response);
+
 	if (response.data.errors[0]) {
 		throw new Error(response.data.errors[0]);
 	}

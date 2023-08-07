@@ -1,6 +1,6 @@
 import { styled } from "styled-components";
 
-export const WarehousesWrapper = styled.div`
+export const CitiesWrapper = styled.div`
 	height: calc(100vh - 240px);
 
 	overflow: auto;

@@ -15,8 +15,6 @@ export const UnstyledSelectControlled: React.FC<IUnstyledSelectControlledProps> 
 	onChangeType,
 	value,
 }) => {
-	console.log("value:", value);
-	console.log("warehousesTypes:", warehousesTypes);
 	return (
 		<div>
 			<CustomSelect

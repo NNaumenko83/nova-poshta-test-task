@@ -9,7 +9,7 @@ import { Main } from "../../components/Main/Main";
 import { getCitiesByName } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { ICities } from "../../Types/CitiesTypes";
-import { CitiesListWrapper, WarehousesWrapper } from "./Warehouses.styled";
+import { CitiesListWrapper, CitiesWrapper } from "./Warehouses.styled";
 import { CitiesList } from "../../components/CitiesList/CitiesList";
 import { ButtonStyled } from "../../components/Button/Button";
 
@@ -20,13 +20,17 @@ export const Warehouses = () => {
 	const [cities, setCities] = useState<ICities>({ Addresses: [], TotalCount: 0 });
 	const [page, setPage] = useState(1);
 	const [totalPage, setTotalPage] = useState(1);
-	console.log("cities:", cities);
 
 	const debouncedGetCities = useDebouncedCallback(async city => {
+		if (!city) {
+			setTotalPage(1);
+			setCities({ Addresses: [], TotalCount: 0 });
+			return;
+		}
 		setIsLoading(true);
 		try {
 			const results = await getCitiesByName(city, page.toString());
-			console.log("results:", results);
+
 			setTotalPage(Math.floor(results.TotalCount / 50));
 			setCities(results);
 		} catch (error) {
@@ -40,6 +44,7 @@ export const Warehouses = () => {
 		setError("");
 		setPage(1);
 		setCityName(e.target.value);
+
 		debouncedGetCities(e.target.value);
 	};
 
@@ -52,7 +57,7 @@ export const Warehouses = () => {
 			setIsLoading(true);
 			try {
 				const results = await getCitiesByName(cityName, page.toString());
-				console.log("results:", results);
+
 				setTotalPage(Math.ceil(results.TotalCount / 50));
 				setCities(state => ({
 					...state,
@@ -69,7 +74,7 @@ export const Warehouses = () => {
 	return (
 		<Main>
 			<FocusOutlineInput value={cityName} onChange={onChange} placeholder="Введіть місто" />
-			<WarehousesWrapper>
+			<CitiesWrapper>
 				{error && <h2>{error}</h2>}
 				{isLoading && cities.Addresses.length === 0 && (
 					<MutatingDots
@@ -101,7 +106,7 @@ export const Warehouses = () => {
 						)}
 					</CitiesListWrapper>
 				)}
-			</WarehousesWrapper>
+			</CitiesWrapper>
 		</Main>
 	);
 };

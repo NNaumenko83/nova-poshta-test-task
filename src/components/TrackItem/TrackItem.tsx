@@ -12,7 +12,6 @@ export const TrackItem: React.FC<ITrackProps> = ({ number, changeTrackNumberHand
 	const dispatch = useAppDispatch();
 
 	const onTrackItemClick = () => {
-		console.log("click number:", number);
 		changeTrackNumberHandler(number);
 		dispatch(getTrack(number));
 	};

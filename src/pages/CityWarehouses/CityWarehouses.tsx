@@ -1,5 +1,6 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams, useSearchParams } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
+import { useDebouncedCallback } from "use-debounce";
 
 import { Main } from "../../components/Main/Main";
 import { UnstyledSelectControlled } from "../../components/Select/Select";
@@ -8,11 +9,10 @@ import { TWarehouse } from "../../Types/WarehouseType";
 import { getWarehousesInCity, getWarehousesTypes } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import FocusOutlineInput from "../../components/Input/Input";
-import { CityTitle, IputsWrapper } from "./CityWarehouses.styled";
+import { CityTitle, IputsWrapper, WarehousesListWrapper, WarehousesWrapper } from "./CityWarehouses.styled";
 import { getCityByRef } from "../../services/api/getCityByRef";
 import { WarehousesList } from "../../components/WarehousesList/WarehousesList";
 import { ButtonStyled } from "../../components/Button/Button";
-import { useDebouncedCallback } from "use-debounce";
 
 interface IWarehouse {
 	CityRef: string;
@@ -26,9 +26,10 @@ export const СityWarehouses = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [warehouses, setWarehouses] = useState<IWarehouse[]>([]);
-	console.log("warehouses:", warehouses);
+
 	const [cityName, setCityName] = useState("");
 	const [page, setPage] = useState(1);
+
 	const [totalPages, setTotalPages] = useState(1);
 
 	const type = searchParams.get("type");
@@ -38,13 +39,12 @@ export const СityWarehouses = () => {
 
 	const debouncedGetWarehouses = useDebouncedCallback(async id => {
 		if (!id) {
-			console.log("!id:", !id);
 			const params = new URLSearchParams();
 			params.append("type", type);
 			params.append("id", "all");
 
 			setSearchParams(params);
-			setWarehouses([]);
+			// setWarehouses([]);
 			return;
 		}
 
@@ -61,6 +61,7 @@ export const СityWarehouses = () => {
 
 	const onChangeType = (type: string | null) => {
 		setWarehouses([]);
+		setPage(1);
 		const params = new URLSearchParams();
 
 		if (type !== null && id !== null) {
@@ -73,11 +74,12 @@ export const СityWarehouses = () => {
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
 		setError("");
 		setPage(1);
+		setTotalPages(1);
 		setWarehouses([]);
 		const params = new URLSearchParams();
 		const newType = type !== null ? type : "all";
+		const newId = e.target.value.trim() ? e.target.value.trim() : "all";
 		params.append("type", newType);
-		const newId = e.target.value.trim();
 		params.append("id", newId);
 		setSearchParams(params);
 
@@ -131,7 +133,7 @@ export const СityWarehouses = () => {
 			setIsLoading(true);
 			try {
 				const data = await getWarehousesInCity(type, city, page.toString(), id);
-				console.log("data.info:", Math.ceil(data.info.totalCount / 50));
+
 				setTotalPages(Math.ceil(data.info.totalCount / 50));
 
 				setWarehouses(prevState => [...prevState, ...data.data]);
@@ -156,22 +158,42 @@ export const СityWarehouses = () => {
 					<FocusOutlineInput value={id === "all" ? "" : id} onChange={onChange} placeholder="Номер віділення" />
 				</IputsWrapper>
 			)}
+			<WarehousesWrapper>
+				{isLoading && warehouses.length === 0 && (
+					<MutatingDots
+						height="100"
+						width="100"
+						color="#df012e"
+						secondaryColor="#df012e"
+						radius="12.5"
+						ariaLabel="mutating-dots-loading"
+						wrapperStyle={{}}
+						wrapperClass=""
+						visible={true}
+					/>
+				)}
 
-			{warehouses.length > 0 && <WarehousesList warehouses={warehouses} />}
-			{totalPages > 0 && page !== totalPages && (
-				<ButtonStyled
-					type="button"
-					onClick={() => {
-						setPage(state => state + 1);
-					}}
-					loading={isLoading}
-					disabled={isLoading}
-				>
-					{!isLoading && "Більше..."}
-				</ButtonStyled>
-			)}
-			{isLoading && <h2>LOADING....</h2>}
-			{error && <h2>{error}</h2>}
+				{warehouses.length > 0 && (
+					<WarehousesListWrapper>
+						<WarehousesList warehouses={warehouses}>
+							{totalPages > 0 && page !== totalPages && (
+								<ButtonStyled
+									type="button"
+									onClick={() => {
+										setPage(state => state + 1);
+									}}
+									loading={isLoading}
+									disabled={isLoading}
+								>
+									{!isLoading && "Більше..."}
+								</ButtonStyled>
+							)}
+							{/* {isLoading && <h2>LOADING....</h2>} */}
+							{error && <h2>{error}</h2>}
+						</WarehousesList>
+					</WarehousesListWrapper>
+				)}
+			</WarehousesWrapper>
 		</Main>
 	);
 };
