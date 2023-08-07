@@ -3,6 +3,15 @@ import { Main } from "../../components/Main/Main";
 import { useEffect, useState } from "react";
 import { getWarehouseInfo } from "../../services/api/getWarehouseInfo";
 import { getErrorMessage } from "../../utils/getErrorMessage";
+import { daysOfWeek } from "../../constans/daysOfWeek";
+import {
+	ColumnTableOne,
+	ColumnTableTwo,
+	InfoWrapper,
+	SheduleTable,
+	TableCell,
+	TableHeader,
+} from "./WarehousesDetails.styled";
 
 interface IDimensions {
 	Height: number;
@@ -26,7 +35,7 @@ interface IWarehouseInfo {
 	ReceivingLimitationsOnDimensions: IDimensions;
 	Reception: IShedule;
 	Schedule: IShedule;
-	SendingLimitationsOnDimensions: { Height: number; Length: number; Width: number };
+	SendingLimitationsOnDimensions: IDimensions;
 	PlaceMaxWeightAllowed: string;
 }
 
@@ -75,36 +84,72 @@ export const WarehousesDetails = () => {
 	const displaySchedule = (schedule: IShedule) => {
 		console.log(Object.entries(schedule));
 		return (
-			<ul>
+			<ColumnTableTwo>
 				{Object.entries(schedule).map(([day, time]) => (
-					<li key={day}>
-						{day}: {time}
-					</li>
+					<TableCell key={day}>{time}</TableCell>
 				))}
-			</ul>
+			</ColumnTableTwo>
 		);
 	};
 
 	return (
 		<Main>
-			<h1>Warehouses details</h1>
-
 			{warehouseInfo.length > 0 && (
-				<div>
-					<h2>Warehouse Information</h2>
-					<p>Number: {warehouseInfo[0].Number}</p>
-					<p>Description: {warehouseInfo[0].Description}</p>
-					<h3>Receiving Limitations On Dimensions:</h3>
-					{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
-					<h3>Reception Schedule:</h3>
-					{displaySchedule(warehouseInfo[0].Reception)}
-					<h3>Schedule:</h3>
-					{displaySchedule(warehouseInfo[0].Schedule)}
-					<h3>Sending Limitations On Dimensions:</h3>
-					{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
-					<p>Total Max Weight Allowed: {warehouseInfo[0].PlaceMaxWeightAllowed}</p>
-				</div>
+				<InfoWrapper>
+					<div style={{ background: "yellow" }}>
+						<p>{warehouseInfo[0].Description}</p>
+					</div>
+
+					<div style={{ background: "pink" }}>
+						<p>Обмеження за габаритами на відправку (см):</p>
+						{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
+					</div>
+
+					<div style={{ background: "grey" }}>
+						<p>Обмеження за габаритами на отримання (см):</p>
+						{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
+					</div>
+
+					<div style={{ background: "tomato" }}>
+						<p>Обмеження ваги: До {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
+					</div>
+
+					<SheduleTable>
+						<TableHeader>Графік роботи</TableHeader>
+						<ColumnTableOne>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+							<div></div>
+						</ColumnTableOne>
+
+						{displaySchedule(warehouseInfo[0].Schedule)}
+					</SheduleTable>
+				</InfoWrapper>
 			)}
 		</Main>
 	);
 };
+
+/*
+<h3>Графік роботи:</h3>;
+{
+	displaySchedule(warehouseInfo[0].Reception);
+}
+{
+	
+					{displaySchedule(warehouseInfo[0].Schedule)}
+}
+
+<h3>Обмеження за габаритами на отримання (см):</h3>;
+{
+	displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions);
+}
+<h3>Графік роботи:</h3>;
+{
+	displaySchedule(warehouseInfo[0].Reception);
+}
+*/
