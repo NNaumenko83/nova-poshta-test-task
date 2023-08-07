@@ -53,7 +53,7 @@ export const Warehouses = () => {
 			try {
 				const results = await getCitiesByName(cityName, page.toString());
 				console.log("results:", results);
-				setTotalPage(Math.floor(results.TotalCount / 50));
+				setTotalPage(Math.ceil(results.TotalCount / 50));
 				setCities(state => ({
 					...state,
 					Addresses: [...state.Addresses, ...results.Addresses],
