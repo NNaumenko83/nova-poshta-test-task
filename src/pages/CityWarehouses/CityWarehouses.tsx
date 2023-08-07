@@ -1,6 +1,7 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { MutatingDots } from "react-loader-spinner";
 import { useDebouncedCallback } from "use-debounce";
+import { toast } from "react-toastify";
 
 import { Main } from "../../components/Main/Main";
 import { UnstyledSelectControlled } from "../../components/Select/Select";
@@ -129,18 +130,29 @@ export const СityWarehouses = () => {
 		};
 
 		fetchCity();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	useEffect(() => {
 		const fetchWarehouses = async () => {
 			setIsLoading(true);
 			try {
-				const data = await getWarehousesInCity(type, city, page.toString(), id);
+				const data = await getWarehousesInCity(type, city, page.toString(), id || "");
 
 				setTotalPages(Math.ceil(data.info.totalCount / 50));
 
 				setWarehouses(prevState => [...prevState, ...data.data]);
 			} catch (error) {
+				toast.error("Something went wrong!", {
+					position: "top-center",
+					autoClose: 3000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					pauseOnHover: true,
+					draggable: true,
+					progress: undefined,
+					theme: "light",
+				});
 				setError(getErrorMessage(error));
 			} finally {
 				setIsLoading(false);
@@ -176,8 +188,7 @@ export const СityWarehouses = () => {
 						visible={true}
 					/>
 				)}
-
-				{warehouses.length > 0 && (
+				{warehouses.length > 0 && !error && (
 					<WarehousesListWrapper>
 						<WarehousesList warehouses={warehouses} />
 						{totalPages > 0 && page !== totalPages && (
