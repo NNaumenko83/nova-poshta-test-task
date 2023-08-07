@@ -37,14 +37,14 @@ export const СityWarehouses = () => {
 
 	const { city } = useParams();
 
-	const debouncedGetWarehouses = useDebouncedCallback(async id => {
+	const debouncedGetWarehouses = useDebouncedCallback(async (id: string | null) => {
 		if (!id) {
 			const params = new URLSearchParams();
-			params.append("type", type);
+			params.append("type", type || "all");
 			params.append("id", "all");
 
 			setSearchParams(params);
-			// setWarehouses([]);
+
 			return;
 		}
 
@@ -59,13 +59,16 @@ export const СityWarehouses = () => {
 		}
 	}, 1000);
 
-	const onChangeType = (type: string | null) => {
+	const onChangeType = (newType: string | null) => {
 		setWarehouses([]);
 		setPage(1);
 		const params = new URLSearchParams();
 
-		if (type !== null && id !== null) {
-			params.append("type", type);
+		if (newType !== null && id !== null) {
+			params.append("type", newType);
+			params.append("id", "all");
+		} else {
+			params.append("type", newType || "all");
 			params.append("id", "all");
 		}
 		setSearchParams(params);
@@ -83,14 +86,17 @@ export const СityWarehouses = () => {
 		params.append("id", newId);
 		setSearchParams(params);
 
-		debouncedGetWarehouses(e.target.value);
+		debouncedGetWarehouses(newId);
 	};
 
 	useEffect(() => {
 		if (!type && !id) {
 			setSearchParams({ type: "all", id: "all" });
 		} else {
-			setSearchParams({ type, id });
+			const params = new URLSearchParams();
+			params.append("type", type || "all");
+			params.append("id", id || "all");
+			setSearchParams(params);
 		}
 
 		const fetchWarehousesType = async () => {
@@ -112,7 +118,7 @@ export const СityWarehouses = () => {
 		const fetchCity = async () => {
 			setIsLoading(true);
 			try {
-				const cityData = await getCityByRef(city);
+				const cityData = await getCityByRef(city || "");
 				setCityName(cityData.Description);
 			} catch (error) {
 				setCityName("");
@@ -126,9 +132,6 @@ export const СityWarehouses = () => {
 	}, []);
 
 	useEffect(() => {
-		if (id && id !== "all") {
-			return;
-		}
 		const fetchWarehouses = async () => {
 			setIsLoading(true);
 			try {
@@ -147,6 +150,7 @@ export const СityWarehouses = () => {
 		if (type) {
 			fetchWarehouses();
 		}
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [type, page, id]);
 
 	return (
@@ -155,17 +159,17 @@ export const СityWarehouses = () => {
 				<IputsWrapper>
 					<CityTitle>{cityName}</CityTitle>
 					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
-					<FocusOutlineInput value={id === "all" ? "" : id} onChange={onChange} placeholder="Номер віділення" />
+					<FocusOutlineInput value={id === "all" ? "" : id || ""} onChange={onChange} placeholder="Номер відділення" />
 				</IputsWrapper>
 			)}
 			<WarehousesWrapper>
 				{isLoading && warehouses.length === 0 && (
 					<MutatingDots
-						height="100"
-						width="100"
+						height={100}
+						width={100}
 						color="#df012e"
 						secondaryColor="#df012e"
-						radius="12.5"
+						radius={12.5}
 						ariaLabel="mutating-dots-loading"
 						wrapperStyle={{}}
 						wrapperClass=""

@@ -2,7 +2,7 @@ import { styled } from "styled-components";
 
 export const IputsWrapper = styled.div`
 	padding: 5px;
-	width: 300px;
+
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -23,10 +23,11 @@ export const IputsWrapper = styled.div`
 
 export const CityTitle = styled.h2`
 	margin: 0 auto;
-	font-size: ${props => props.theme.fontSizes.xsmall};
+	font-size: ${props => props.theme.fontSizes.small};
 	text-align: center;
 	@media screen and (min-width: 600px) {
 		font-size: ${props => props.theme.fontSizes.small};
+		margin: 0;
 	}
 `;
 
@@ -38,6 +39,13 @@ export const WarehousesWrapper = styled.div`
 	justify-content: center;
 	align-items: center;
 	margin-top: 10px;
+	padding: 5px 10px;
+
+	border: 2px solid ${props => props.theme.colors.borderComponents};
+	border-radius: 20px;
+	@media screen and (min-width: 600px) {
+		height: calc(100vh - 260px);
+	}
 `;
 
 export const WarehousesListWrapper = styled.div`

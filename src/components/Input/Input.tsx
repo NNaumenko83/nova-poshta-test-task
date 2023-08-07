@@ -21,7 +21,7 @@ const FocusOutlineInput: React.FC<FocusOutlineInputProps> = ({ onChange, placeho
 			sx={{
 				width: "200px",
 				height: "50px",
-				margin: "0 auto",
+
 				"&::before": {
 					border: `1.5px  solid ${theme.colors.secondBackGround}`,
 					transform: "scaleX(0)",
