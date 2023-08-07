@@ -8,7 +8,8 @@ import { TWarehouse } from "../../Types/WarehouseType";
 import { getWarehousesInCity, getWarehousesTypes } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import FocusOutlineInput from "../../components/Input/Input";
-import { IputsWrapper } from "./CityWarehouses.styled";
+import { CityTitle, IputsWrapper } from "./CityWarehouses.styled";
+import { getCityByRef } from "../../services/api/getCityByRef";
 
 interface IWarehouse {
 	CityRef: string;
@@ -22,6 +23,7 @@ export const СityWarehouses = () => {
 	const [isLoading, setIsLoading] = useState(false);
 	const [error, setError] = useState("");
 	const [warehouses, setWarehouses] = useState<IWarehouse[]>([]);
+	const [cityName, setCityName] = useState("");
 
 	console.log("warehouses:", warehouses);
 
@@ -57,7 +59,6 @@ export const СityWarehouses = () => {
 
 	useEffect(() => {
 		if (!type && !number) {
-			console.log("Перший рендер");
 			setSearchParams({ type: "all", number: "" });
 		} else {
 			setSearchParams({ type, number });
@@ -78,6 +79,22 @@ export const СityWarehouses = () => {
 		if (warehousesTypes.length === 0) {
 			fetchWarehousesType();
 		}
+
+		const fetchCity = async () => {
+			setIsLoading(true);
+			try {
+				const cityData = await getCityByRef(city);
+				console.log("cityData:", cityData.Description);
+				setCityName(cityData.Description);
+			} catch (error) {
+				setCityName("");
+				setError(getErrorMessage(error));
+			} finally {
+				setIsLoading(false);
+			}
+		};
+
+		fetchCity();
 	}, []);
 
 	useEffect(() => {
@@ -100,9 +117,9 @@ export const СityWarehouses = () => {
 
 	return (
 		<Main>
-			<h1>Warehouses in city {city}</h1>
 			{warehousesTypes.length > 0 && (
 				<IputsWrapper>
+					<CityTitle>{cityName}</CityTitle>
 					<UnstyledSelectControlled warehousesTypes={warehousesTypes} onChangeType={onChangeType} value={type} />
 					<FocusOutlineInput value={number} onChange={onChange} placeholder="Номер віділення" />
 				</IputsWrapper>
