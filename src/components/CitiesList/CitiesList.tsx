@@ -10,7 +10,7 @@ interface ICitiesListProps {
 export const CitiesList: React.FC<ICitiesListProps> = ({ cities }) => {
 	console.log("cities:", cities);
 	return cities.Addresses.map(item => (
-		<WarehouseLinkWrapper key={item.Ref}>
+		<WarehouseLinkWrapper key={item.Present}>
 			<Link to={`/warehouses/${item.DeliveryCity}`}>{item.Present}</Link>
 		</WarehouseLinkWrapper>
 	));

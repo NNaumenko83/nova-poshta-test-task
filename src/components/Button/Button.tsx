@@ -39,7 +39,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 			sx={{
 				bgcolor: `${theme.colors.secondBackGround}`,
 				color: `${theme.colors.brightTxt}`,
-				padding: "2px",
+				padding: "5px",
 				margin: " 0 auto",
 
 				width: "70px",
