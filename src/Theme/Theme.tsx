@@ -6,6 +6,7 @@ const theme = {
 		mainBackGround: "#ffffff",
 		secondBackGround: "#df012e",
 		thirdBacgroundCOlor: "#df6513",
+		fourthBacgroundCOlor: "#fffbaf",
 		darkText: "#000000",
 		brightTxt: "#ffffff",
 		borderNonActive: "#e2e2e2",

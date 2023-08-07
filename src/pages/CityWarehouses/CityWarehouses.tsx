@@ -10,6 +10,8 @@ import { getErrorMessage } from "../../utils/getErrorMessage";
 import FocusOutlineInput from "../../components/Input/Input";
 import { CityTitle, IputsWrapper } from "./CityWarehouses.styled";
 import { getCityByRef } from "../../services/api/getCityByRef";
+import { WarehousesList } from "../../components/WarehousesList/WarehousesList";
+import { ButtonStyled } from "../../components/Button/Button";
 
 interface IWarehouse {
 	CityRef: string;
@@ -124,12 +126,18 @@ export const СityWarehouses = () => {
 					<FocusOutlineInput value={number} onChange={onChange} placeholder="Номер віділення" />
 				</IputsWrapper>
 			)}
-			{warehouses.length > 0 &&
-				warehouses.map(item => (
-					<div key={item.Ref}>
-						<Link to={`/warehouses/${item.CityRef}/${item.Ref}`}>{item.Description}</Link>{" "}
-					</div>
-				))}
+
+			{warehouses.length > 0 && <WarehousesList warehouses={warehouses} />}
+			<ButtonStyled
+				type="button"
+				onClick={() => {
+					setPage(state => state + 1);
+				}}
+				loading={isLoading}
+				disabled={isLoading}
+			>
+				{!isLoading && "Більше..."}
+			</ButtonStyled>
 			{isLoading && <h2>LOADING....</h2>}
 			{error && <h2>{error}</h2>}
 		</Main>
