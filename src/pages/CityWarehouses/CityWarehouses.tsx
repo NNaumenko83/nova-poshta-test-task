@@ -30,65 +30,12 @@ export const СityWarehouses = () => {
 
 	const [cityName, setCityName] = useState("");
 	const [page, setPage] = useState(1);
-
 	const [totalPages, setTotalPages] = useState(1);
 
 	const type = searchParams.get("type");
 	const id = searchParams.get("id");
 
 	const { city } = useParams();
-
-	const debouncedGetWarehouses = useDebouncedCallback(async (id: string | null) => {
-		if (!id) {
-			const params = new URLSearchParams();
-			params.append("type", type || "all");
-			params.append("id", "all");
-
-			setSearchParams(params);
-
-			return;
-		}
-
-		setIsLoading(true);
-		try {
-			const results = await getWarehousesInCity(type, city, page.toString(), id);
-			setWarehouses(results.data);
-		} catch (error) {
-			setError(getErrorMessage(error));
-		} finally {
-			setIsLoading(false);
-		}
-	}, 1000);
-
-	const onChangeType = (newType: string | null) => {
-		setWarehouses([]);
-		setPage(1);
-		const params = new URLSearchParams();
-
-		if (newType !== null && id !== null) {
-			params.append("type", newType);
-			params.append("id", "all");
-		} else {
-			params.append("type", newType || "all");
-			params.append("id", "all");
-		}
-		setSearchParams(params);
-	};
-
-	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
-		setError("");
-		setPage(1);
-		setTotalPages(1);
-		setWarehouses([]);
-		const params = new URLSearchParams();
-		const newType = type !== null ? type : "all";
-		const newId = e.target.value.trim() ? e.target.value.trim() : "all";
-		params.append("type", newType);
-		params.append("id", newId);
-		setSearchParams(params);
-
-		debouncedGetWarehouses(newId);
-	};
 
 	useEffect(() => {
 		if (!type && !id) {
@@ -164,6 +111,58 @@ export const СityWarehouses = () => {
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [type, page, id]);
+
+	const debouncedGetWarehouses = useDebouncedCallback(async (id: string | null) => {
+		if (!id) {
+			const params = new URLSearchParams();
+			params.append("type", type || "all");
+			params.append("id", "all");
+
+			setSearchParams(params);
+
+			return;
+		}
+
+		setIsLoading(true);
+		try {
+			const results = await getWarehousesInCity(type, city, page.toString(), id);
+			setWarehouses(results.data);
+		} catch (error) {
+			setError(getErrorMessage(error));
+		} finally {
+			setIsLoading(false);
+		}
+	}, 1000);
+
+	const onChangeType = (newType: string | null) => {
+		setWarehouses([]);
+		setPage(1);
+		const params = new URLSearchParams();
+
+		if (newType !== null && id !== null) {
+			params.append("type", newType);
+			params.append("id", "all");
+		} else {
+			params.append("type", newType || "all");
+			params.append("id", "all");
+		}
+		setSearchParams(params);
+	};
+
+	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+		setError("");
+		setPage(1);
+		setTotalPages(1);
+		setWarehouses([]);
+		const params = new URLSearchParams();
+		const newType = type !== null ? type : "all";
+		const newId = e.target.value.trim() ? e.target.value.trim() : "all";
+		params.append("type", newType);
+		params.append("id", newId);
+		setSearchParams(params);
+
+		debouncedGetWarehouses(newId);
+	};
 
 	return (
 		<Main>
