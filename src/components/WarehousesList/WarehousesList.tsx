@@ -1,21 +1,28 @@
-import React, { Children, ReactNode } from "react";
-
+import React from "react";
 import { TWarehouse } from "../../Types/WarehouseType";
-import { WarehouseItem } from "../WarehouseItem/WarehouseItem";
-import { WarehousesListStyled } from "./WarehousesList.styled";
+import { WarehouseLinkWrapper } from "./WarehousesList.styled";
+import { Link } from "react-router-dom";
+import { styled } from "styled-components";
+
+const StyledLink = styled(Link)`
+	display: block;
+	padding: 5px;
+	width: 100%;
+	height: 100%;
+`;
 
 interface IWarehousesListProps {
 	warehouses: TWarehouse[];
-	children: ReactNode;
 }
 
-export const WarehousesList: React.FC<IWarehousesListProps> = ({ warehouses, children }) => {
+export const WarehousesList: React.FC<IWarehousesListProps> = ({ warehouses }) => {
 	return (
-		<WarehousesListStyled>
+		<>
 			{warehouses.map((item: TWarehouse) => (
-				<WarehouseItem key={item.Ref} warehouse={item} />
+				<WarehouseLinkWrapper key={item.Ref}>
+					<StyledLink to={`/warehouses/${item.CityRef}/${item.Ref}`}>{item.Description}</StyledLink>
+				</WarehouseLinkWrapper>
 			))}
-			{children}
-		</WarehousesListStyled>
+		</>
 	);
 };

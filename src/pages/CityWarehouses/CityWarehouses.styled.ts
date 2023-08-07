@@ -9,12 +9,25 @@ export const IputsWrapper = styled.div`
 
 	margin: 0 auto;
 	gap: 10px;
+
+	border: 2px solid ${props => props.theme.colors.borderComponents};
+	border-radius: 20px;
+
+	@media screen and (min-width: 600px) {
+		flex-direction: row;
+		justify-content: center;
+		width: 100%;
+		height: 80px;
+	}
 `;
 
 export const CityTitle = styled.h2`
 	margin: 0 auto;
 	font-size: ${props => props.theme.fontSizes.xsmall};
 	text-align: center;
+	@media screen and (min-width: 600px) {
+		font-size: ${props => props.theme.fontSizes.small};
+	}
 `;
 
 export const WarehousesWrapper = styled.div`
@@ -32,6 +45,12 @@ export const WarehousesListWrapper = styled.div`
 	flex-direction: column;
 	gap: 5px;
 	height: 100%;
+	width: 100%;
+	padding: 0 10px;
+
 	font-size: ${props => props.theme.fontSizes.xssmall};
 	overflow: auto;
+	@media screen and (min-width: 768px) {
+		font-size: ${props => props.theme.fontSizes.small};
+	}
 `;

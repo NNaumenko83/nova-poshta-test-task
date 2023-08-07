@@ -1,5 +1,4 @@
 import React, { MouseEvent, ReactNode } from "react";
-import SendIcon from "@mui/icons-material/Send";
 import Button from "@mui/joy/Button";
 import { useTheme } from "styled-components";
 
@@ -44,7 +43,7 @@ export const ButtonStyled: React.FC<ButtonStyledProps> = ({
 
 				width: "70px",
 				height: "50px",
-				fontSize: "15px",
+				fontSize: "12px",
 				transition: "all 250ms linear",
 				":hover": {
 					bgcolor: `${theme.colors.thirdBacgroundCOlor}`,

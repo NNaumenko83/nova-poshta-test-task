@@ -9,7 +9,7 @@ import { Main } from "../../components/Main/Main";
 import { getCitiesByName } from "../../services/api";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { ICities } from "../../Types/CitiesTypes";
-import { CitiesListWrapper, CitiesWrapper } from "./Warehouses.styled";
+import { CitiesListWrapper, CitiesWrapper, InputWrapper } from "./Warehouses.styled";
 import { CitiesList } from "../../components/CitiesList/CitiesList";
 import { ButtonStyled } from "../../components/Button/Button";
 
@@ -73,7 +73,10 @@ export const Warehouses = () => {
 
 	return (
 		<Main>
-			<FocusOutlineInput value={cityName} onChange={onChange} placeholder="Введіть місто" />
+			<InputWrapper>
+				<FocusOutlineInput value={cityName} onChange={onChange} placeholder="Введіть місто" />
+			</InputWrapper>
+
 			<CitiesWrapper>
 				{error && <h2>{error}</h2>}
 				{isLoading && cities.Addresses.length === 0 && (

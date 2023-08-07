@@ -175,22 +175,19 @@ export const СityWarehouses = () => {
 
 				{warehouses.length > 0 && (
 					<WarehousesListWrapper>
-						<WarehousesList warehouses={warehouses}>
-							{totalPages > 0 && page !== totalPages && (
-								<ButtonStyled
-									type="button"
-									onClick={() => {
-										setPage(state => state + 1);
-									}}
-									loading={isLoading}
-									disabled={isLoading}
-								>
-									{!isLoading && "Більше..."}
-								</ButtonStyled>
-							)}
-							{/* {isLoading && <h2>LOADING....</h2>} */}
-							{error && <h2>{error}</h2>}
-						</WarehousesList>
+						<WarehousesList warehouses={warehouses} />
+						{totalPages > 0 && page !== totalPages && (
+							<ButtonStyled
+								type="button"
+								onClick={() => {
+									setPage(state => state + 1);
+								}}
+								loading={isLoading}
+								disabled={isLoading}
+							>
+								{!isLoading && "Більше..."}
+							</ButtonStyled>
+						)}
 					</WarehousesListWrapper>
 				)}
 			</WarehousesWrapper>
