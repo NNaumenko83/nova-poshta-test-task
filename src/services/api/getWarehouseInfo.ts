@@ -15,5 +15,5 @@ export const getWarehouseInfo = async (ref: string) => {
 	if (response.data.errors[0]) {
 		throw new Error(response.data.errors[0]);
 	}
-	return response.data.data[0];
+	return response.data.data;
 };

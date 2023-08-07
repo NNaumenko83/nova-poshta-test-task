@@ -8,6 +8,7 @@ export const ListItem = styled.li`
 	border: 1px solid ${props => props.theme.colors.borderNonActive};
 	border-radius: 8px;
 	cursor: pointer;
+	background-color: ${props => props.theme.colors.fourthBacgroundCOlor};
 
 	font-size: ${props => props.theme.fontSizes.xsmall};
 	transition: transform 150ms linear;

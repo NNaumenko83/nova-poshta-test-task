@@ -6,6 +6,7 @@ const theme = {
 		mainBackGround: "#ffffff",
 		secondBackGround: "#df012e",
 		thirdBacgroundCOlor: "#df6513",
+		fourthBacgroundCOlor: "#fffbaf",
 		darkText: "#000000",
 		brightTxt: "#ffffff",
 		borderNonActive: "#e2e2e2",
@@ -14,6 +15,7 @@ const theme = {
 	},
 
 	fontSizes: {
+		xssmall: "0.6rem",
 		xsmall: "0.8rem",
 		small: "1.0rem",
 		medium: "1.5rem",
