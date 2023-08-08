@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
+import { MutatingDots } from "react-loader-spinner";
+
 import { Main } from "../../components/Main/Main";
 import { useEffect, useState } from "react";
 import { getWarehouseInfo } from "../../services/api/getWarehouseInfo";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { daysOfWeek } from "../../constans/daysOfWeek";
 import { dimensionsUa } from "../../constans/dimemsions";
-
 import {
 	ColumnTableOne,
 	ColumnTableTwo,
@@ -65,7 +66,7 @@ const WarehousesDetails = () => {
 	const [isLoading, setIsLoading] = useState(false);
 
 	const [warehouseInfo, setWarehouseInfo] = useState<IWarehouseInfo[]>([]);
-	const { city, ref } = useParams();
+	const { ref } = useParams();
 
 	useEffect(() => {
 		const fetchWarehouseInfo = async () => {
@@ -117,7 +118,18 @@ const WarehousesDetails = () => {
 
 	return (
 		<Main>
-			{warehouseInfo.length > 0 && (
+			{isLoading && (
+				<MutatingDots
+					height={100}
+					width={100}
+					color="#df012e"
+					secondaryColor="#df012e"
+					radius={12.5}
+					ariaLabel="mutating-dots-loading"
+					visible={true}
+				/>
+			)}
+			{!isLoading && !error && warehouseInfo.length > 0 && (
 				<InfoWrapper>
 					<CommonInfoWrapper>
 						<div>
