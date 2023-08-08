@@ -55,6 +55,7 @@ interface IWarehouseInfo {
 	Reception: IShedule;
 	Schedule: IShedule;
 	SendingLimitationsOnDimensions: IDimensions;
+	TotalMaxWeightAllowed: string;
 	PlaceMaxWeightAllowed: string;
 }
 
@@ -136,7 +137,14 @@ const WarehousesDetails = () => {
 						</div>
 
 						<div>
-							<InfoTitle>Обмеження ваги:</InfoTitle> <p>до {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
+							<InfoTitle>Обмеження ваги:</InfoTitle>{" "}
+							<p>
+								<span>до </span>
+								{warehouseInfo[0].TotalMaxWeightAllowed !== "0"
+									? warehouseInfo[0].TotalMaxWeightAllowed
+									: warehouseInfo[0].PlaceMaxWeightAllowed}
+								<span> кг</span>
+							</p>
 						</div>
 					</CommonInfoWrapper>
 

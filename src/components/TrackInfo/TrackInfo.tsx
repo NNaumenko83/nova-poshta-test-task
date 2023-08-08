@@ -20,13 +20,13 @@ export const TrackInfo: React.FC<ITrackInfoProps> = ({ trackNumber }) => {
 					</div>
 					{findTrack.warehouseSender && (
 						<div>
-							<InfoLabel>Відправлено:</InfoLabel>
+							<InfoLabel>Адреса відправки:</InfoLabel>
 							<span>{findTrack.warehouseSender}</span>
 						</div>
 					)}
 					{findTrack.warehouseRecipient && (
 						<div>
-							<InfoLabel>Отримано:</InfoLabel>
+							<InfoLabel>Адреса доставки:</InfoLabel>
 							<span>{findTrack.warehouseRecipient}</span>
 						</div>
 					)}
