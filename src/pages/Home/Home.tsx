@@ -5,7 +5,7 @@ import { TrackInfo } from "../../components/TrackInfo/TrackInfo";
 import { HomeContainer } from "./Home.styled";
 import { useState } from "react";
 
-export const Home = () => {
+const Home = () => {
 	const [trackNumber, setTrackNumber] = useState("");
 
 	const changeTrackNumberHandler = (track: string) => {
@@ -22,3 +22,5 @@ export const Home = () => {
 		</Main>
 	);
 };
+
+export default Home;

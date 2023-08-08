@@ -21,7 +21,7 @@ interface IWarehouse {
 	Ref: string;
 }
 
-export const СityWarehouses = () => {
+const СityWarehouses = () => {
 	const [warehousesTypes, setWarehousesTypes] = useState<TWarehouse[]>([]);
 	const [searchParams, setSearchParams] = useSearchParams();
 	const [isLoading, setIsLoading] = useState(false);
@@ -208,3 +208,5 @@ export const СityWarehouses = () => {
 		</Main>
 	);
 };
+
+export default СityWarehouses;

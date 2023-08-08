@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
-
 import { MutatingDots } from "react-loader-spinner";
 
 import FocusOutlineInput from "../../components/Input/Input";
@@ -13,7 +12,7 @@ import { CitiesListWrapper, CitiesWrapper, InputWrapper } from "./Warehouses.sty
 import { CitiesList } from "../../components/CitiesList/CitiesList";
 import { ButtonStyled } from "../../components/Button/Button";
 
-export const Warehouses = () => {
+const Warehouses = () => {
 	const [cityName, setCityName] = useState("");
 	const [error, setError] = useState("");
 	const [isLoading, setIsLoading] = useState(false);
@@ -113,3 +112,5 @@ export const Warehouses = () => {
 		</Main>
 	);
 };
+
+export default Warehouses;

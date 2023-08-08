@@ -58,7 +58,7 @@ interface IWarehouseInfo {
 	PlaceMaxWeightAllowed: string;
 }
 
-export const WarehousesDetails = () => {
+const WarehousesDetails = () => {
 	const [error, setError] = useState("");
 	console.log("error:", error);
 	const [isLoading, setIsLoading] = useState(false);
@@ -150,3 +150,5 @@ export const WarehousesDetails = () => {
 		</Main>
 	);
 };
+
+export default WarehousesDetails;

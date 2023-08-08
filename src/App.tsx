@@ -1,12 +1,14 @@
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
+import { lazy } from "react";
 import "react-toastify/dist/ReactToastify.css";
 import { SharedLayout } from "./components/SharedLayout/SharedLayout";
-import { Home } from "./pages/Home/Home";
-import { Warehouses } from "./pages/Warehouses/Warehouses";
-import { СityWarehouses } from "./pages/CityWarehouses/CityWarehouses";
 import Theme from "./Theme/Theme";
-import { WarehousesDetails } from "./pages/WarehouseDetails/WarehouseDetails";
+
+const Home = lazy(() => import("./pages/Home/Home"));
+const Warehouses = lazy(() => import("./pages/Warehouses/Warehouses"));
+const СityWarehouses = lazy(() => import("./pages/CityWarehouses/CityWarehouses"));
+const WarehousesDetails = lazy(() => import("./pages/WarehouseDetails/WarehouseDetails"));
 
 function App() {
 	return (
