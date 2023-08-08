@@ -1,4 +1,4 @@
-import { API_KEY } from "../../constans/constans";
+import { API_KEY } from "../../constans/apiKey";
 import axios from "axios";
 
 export const getWarehouseInfo = async (ref: string) => {

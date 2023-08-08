@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 import { Track } from "../Types/Track";
-import { API_KEY } from "../constans/constans";
+import { API_KEY } from "../constans/apiKey";
 
 axios.defaults.baseURL = "https://api.novaposhta.ua/v2.0/json/";
 
