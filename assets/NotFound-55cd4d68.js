@@ -1,4 +1,4 @@
-import{s as t,j as e}from"./index-d26a3a86.js";import{M as n}from"./Main-6ec37c79.js";const r="/nova-poshta-test-task/assets/10-error-404-page-examples-for-UX-design_min-9720d0b2.jpg",s=t.div`
+import{s as n,j as e}from"./main-77c60589.js";import{M as t}from"./Main-a2a8ae53.js";const r="/assets/10-error-404-page-examples-for-UX-design_min-9720d0b2.jpg",s=n.div`
 	display: flex;
 	justify-content: center;
 	padding: 20px;
@@ -13,4 +13,4 @@ import{s as t,j as e}from"./index-d26a3a86.js";import{M as n}from"./Main-6ec37c7
 
 	font-size: ${o=>o.theme.fontSizes.medium};
 	font-weight: ${o=>o.theme.fontWeights.bold};
-`,d=()=>e.jsx(n,{children:e.jsx(s,{children:e.jsx("p",{children:"Page not found"})})});export{d as default};
+`,d=()=>e.jsx(t,{children:e.jsx(s,{children:e.jsx("p",{children:"Page not found"})})});export{d as default};

@@ -1,4 +1,4 @@
-import{b as w,A as v,s as d,j as r,L as k,r as i,M as j,Q as S}from"./index-d26a3a86.js";import{c as A}from"./index.module-adf7f7fa.js";import{F as $,B as L}from"./Input-dcb8fffb.js";import{M as P}from"./Main-6ec37c79.js";import{g as x}from"./getErrorMessage-20be7751.js";const f=async(e,s)=>{const n={apiKey:v,modelName:"Address",calledMethod:"searchSettlements",methodProperties:{CityName:e,Limit:"50",Page:s}},o=await w.post("",n);if(o.data.errors[0])throw new Error(o.data.errors[0]);return o.data.data[0]},B=d.div`
+import{a as w,A as v,s as d,j as r,L as k,r as i,M as j,Q as S}from"./main-77c60589.js";import{c as A}from"./index.module-9ed8ec36.js";import{F as $,B as L}from"./Input-642383b5.js";import{M as P}from"./Main-a2a8ae53.js";import{g as x}from"./getErrorMessage-20be7751.js";const f=async(e,s)=>{const n={apiKey:v,modelName:"Address",calledMethod:"searchSettlements",methodProperties:{CityName:e,Limit:"50",Page:s}},o=await w.post("",n);if(o.data.errors[0])throw new Error(o.data.errors[0]);return o.data.data[0]},B=d.div`
 	height: calc(100vh - 265px);
 
 	overflow: auto;
