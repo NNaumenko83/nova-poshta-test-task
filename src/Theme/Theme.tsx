@@ -20,7 +20,6 @@ const theme = {
 		small: "1.0rem",
 		medium: "1.2rem",
 		large: "3rem",
-		xlarge: "4.5",
 	},
 	fontWeights: {
 		light: 300,

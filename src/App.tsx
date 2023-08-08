@@ -9,6 +9,7 @@ const Home = lazy(() => import("./pages/Home/Home"));
 const Warehouses = lazy(() => import("./pages/Warehouses/Warehouses"));
 const СityWarehouses = lazy(() => import("./pages/CityWarehouses/CityWarehouses"));
 const WarehousesDetails = lazy(() => import("./pages/WarehouseDetails/WarehouseDetails"));
+const NotFound = lazy(() => import("./pages/NotFound/NotFound"));
 
 function App() {
 	return (
@@ -19,6 +20,7 @@ function App() {
 					<Route path="warehouses" element={<Warehouses />} />
 					<Route path="warehouses/:city" element={<СityWarehouses />} />
 					<Route path="warehouses/:city/:ref" element={<WarehousesDetails />} />
+					<Route path="*" element={<NotFound />} />
 				</Route>
 			</Routes>
 			<ToastContainer />
