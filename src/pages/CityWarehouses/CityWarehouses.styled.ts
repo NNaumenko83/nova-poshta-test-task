@@ -34,15 +34,15 @@ export const CityTitle = styled.h2`
 export const WarehousesWrapper = styled.div`
 	height: calc(100vh - 320px);
 
-	overflow: auto;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	margin-top: 10px;
+	margin-top: 5px;
 	padding: 5px 10px;
 
 	border: 2px solid ${props => props.theme.colors.borderComponents};
 	border-radius: 20px;
+
 	@media screen and (min-width: 600px) {
 		height: calc(100vh - 260px);
 	}
@@ -58,6 +58,20 @@ export const WarehousesListWrapper = styled.div`
 
 	font-size: ${props => props.theme.fontSizes.xssmall};
 	overflow: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.colors.secondBackGround};
+		border-radius: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: ${props => props.theme.colors.footerLinkSecondColor};
+		border-radius: 8px;
+	}
 	@media screen and (min-width: 768px) {
 		font-size: ${props => props.theme.fontSizes.small};
 	}

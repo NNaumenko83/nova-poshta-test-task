@@ -24,6 +24,21 @@ export const CitiesListWrapper = styled.div`
 
 	font-size: ${props => props.theme.fontSizes.xssmall};
 	overflow: auto;
+
+	&::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: ${props => props.theme.colors.secondBackGround};
+		border-radius: 8px;
+	}
+
+	&::-webkit-scrollbar-track {
+		background-color: ${props => props.theme.colors.footerLinkSecondColor};
+		border-radius: 8px;
+	}
+
 	@media screen and (min-width: 768px) {
 		font-size: ${props => props.theme.fontSizes.small};
 	}

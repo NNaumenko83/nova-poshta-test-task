@@ -110,7 +110,7 @@ const СityWarehouses = () => {
 			fetchWarehouses();
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [type, page, id]);
+	}, [type, page]);
 
 	const debouncedGetWarehouses = useDebouncedCallback(async (id: string | null) => {
 		if (!id) {
@@ -150,13 +150,29 @@ const СityWarehouses = () => {
 	};
 
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
+		if (e.target.value.trim() !== "" && !/^\d*$/.test(e.target.value.trim())) {
+			toast.error("Будь ласка, введіть цифри", {
+				position: "top-center",
+				autoClose: 1000,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+
+			return;
+		}
 		setError("");
 		setPage(1);
 		setTotalPages(1);
 		setWarehouses([]);
+
 		const params = new URLSearchParams();
 		const newType = type !== null ? type : "all";
 		const newId = e.target.value.trim() ? e.target.value.trim() : "all";
+
 		params.append("type", newType);
 		params.append("id", newId);
 		setSearchParams(params);
