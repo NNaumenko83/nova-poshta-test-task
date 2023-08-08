@@ -150,23 +150,3 @@ export const WarehousesDetails = () => {
 		</Main>
 	);
 };
-
-/*
-<h3>Графік роботи:</h3>;
-{
-	displaySchedule(warehouseInfo[0].Reception);
-}
-{
-	
-					{displaySchedule(warehouseInfo[0].Schedule)}
-}
-
-<h3>Обмеження за габаритами на отримання (см):</h3>;
-{
-	displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions);
-}
-<h3>Графік роботи:</h3>;
-{
-	displaySchedule(warehouseInfo[0].Reception);
-}
-*/
