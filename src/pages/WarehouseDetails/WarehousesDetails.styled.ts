@@ -13,7 +13,7 @@ export const InfoWrapper = styled.div`
 	@media screen and (min-width: 600px) {
 		font-size: ${props => props.theme.fontSizes.xsmall};
 		grid-template-columns: repeat(7, 1fr);
-		grid-template-rows: 200px repeat(3, 1fr);
+		grid-template-rows: 250px repeat(3, 1fr);
 	}
 `;
 
@@ -100,4 +100,11 @@ export const TableCell = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+`;
+
+export const LoadingWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100%;
 `;

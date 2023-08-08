@@ -16,6 +16,7 @@ import {
 	TableHeader,
 	CommonInfoWrapper,
 	InfoTitle,
+	LoadingWrapper,
 } from "./WarehousesDetails.styled";
 
 interface IdaysOfWeek {
@@ -118,52 +119,55 @@ const WarehousesDetails = () => {
 
 	return (
 		<Main>
-			{isLoading && (
-				<MutatingDots
-					height={100}
-					width={100}
-					color="#df012e"
-					secondaryColor="#df012e"
-					radius={12.5}
-					ariaLabel="mutating-dots-loading"
-					visible={true}
-				/>
-			)}
 			{!isLoading && !error && warehouseInfo.length > 0 && (
 				<InfoWrapper>
-					<CommonInfoWrapper>
-						<div>
-							<InfoTitle>{warehouseInfo[0].Description}</InfoTitle>
-						</div>
+					<>
+						<CommonInfoWrapper>
+							<div>
+								<InfoTitle>{warehouseInfo[0].Description}</InfoTitle>
+							</div>
 
-						<div>
-							<InfoTitle>Обмеження за габаритами на відправку (см):</InfoTitle>
-							{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
-						</div>
+							<div>
+								<InfoTitle>Обмеження за габаритами на відправку (см):</InfoTitle>
+								{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
+							</div>
 
-						<div>
-							<InfoTitle>Обмеження за габаритами на отримання (см):</InfoTitle>
-							{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
-						</div>
+							<div>
+								<InfoTitle>Обмеження за габаритами на отримання (см):</InfoTitle>
+								{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
+							</div>
 
-						<div>
-							<InfoTitle>Обмеження ваги:</InfoTitle>{" "}
-							<p>
-								<span>до </span>
-								{warehouseInfo[0].TotalMaxWeightAllowed !== "0"
-									? warehouseInfo[0].TotalMaxWeightAllowed
-									: warehouseInfo[0].PlaceMaxWeightAllowed}
-								<span> кг</span>
-							</p>
-						</div>
-					</CommonInfoWrapper>
+							<div>
+								<InfoTitle>Обмеження ваги:</InfoTitle>
+								<p>
+									<span>до </span>
+									{warehouseInfo[0].TotalMaxWeightAllowed !== "0"
+										? warehouseInfo[0].TotalMaxWeightAllowed
+										: warehouseInfo[0].PlaceMaxWeightAllowed}
+									<span> кг</span>
+								</p>
+							</div>
+						</CommonInfoWrapper>
+						<SheduleTable>
+							<TableHeader>Графік роботи</TableHeader>
 
-					<SheduleTable>
-						<TableHeader>Графік роботи</TableHeader>
-
-						{displayScheduleTime(warehouseInfo[0].Schedule)}
-					</SheduleTable>
+							{displayScheduleTime(warehouseInfo[0].Schedule)}
+						</SheduleTable>
+					</>
 				</InfoWrapper>
+			)}
+			{isLoading && (
+				<LoadingWrapper>
+					<MutatingDots
+						height={100}
+						width={100}
+						color="#df012e"
+						secondaryColor="#df012e"
+						radius={12.5}
+						ariaLabel="mutating-dots-loading"
+						visible={true}
+					/>
+				</LoadingWrapper>
 			)}
 		</Main>
 	);
