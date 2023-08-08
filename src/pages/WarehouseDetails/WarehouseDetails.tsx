@@ -67,7 +67,6 @@ export const WarehousesDetails = () => {
 	console.log("city:", city);
 
 	useEffect(() => {
-		console.log("useEffect");
 		const fetchWarehouseInfo = async () => {
 			setIsLoading(true);
 			if (ref) {
@@ -99,7 +98,6 @@ export const WarehousesDetails = () => {
 	};
 
 	const displayScheduleTime = (schedule: IShedule) => {
-		console.log(Object.entries(schedule));
 		return (
 			<>
 				<ColumnTableOne>
@@ -140,15 +138,6 @@ export const WarehousesDetails = () => {
 
 					<SheduleTable>
 						<TableHeader>Графік роботи</TableHeader>
-						<ColumnTableOne>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-						</ColumnTableOne>
 
 						{displayScheduleTime(warehouseInfo[0].Schedule)}
 					</SheduleTable>

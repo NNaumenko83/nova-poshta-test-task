@@ -11,6 +11,14 @@ export const InfoWrapper = styled.div`
 	grid-template-rows: 50px repeat(2, 100px) 30px 1fr;
 
 	grid-row-gap: 5px;
+
+	@media screen and (min-width: 768px) {
+		display: grid;
+		grid-template-columns: repeat(7, 1fr);
+		grid-template-rows: repeat(7, 1fr);
+		grid-column-gap: 0px;
+		grid-row-gap: 0px;
+	}
 `;
 
 export const SheduleTable = styled.div`
@@ -34,11 +42,21 @@ export const TableHeader = styled.div`
 export const ColumnTableOne = styled.div`
 	background: green;
 	grid-area: 2 / 1 / 9 / 2;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(7, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 `;
 
 export const ColumnTableTwo = styled.div`
 	background: purple;
 	grid-area: 2 / 2 / 9 / 3;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-template-rows: repeat(7, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 `;
 
 export const TableCell = styled.div`
