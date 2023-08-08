@@ -1,4 +1,4 @@
-import{R as c,u as f,c as g,a as b,s as n,j as t,g as p,G as j,d as k,r as v}from"./index-c7929d65.js";import{M as w}from"./Main-3891b052.js";import{F as S,B as y}from"./Input-d617a7fe.js";function u(e=c){const o=e===c?f:g(e);return function(){const{store:s}=o();return s}}const C=u();function $(e=c){const o=e===c?C:u(e);return function(){return o().dispatch}}const B=$(),d=()=>B(),l=b,T=n.li`
+import{R as c,u as f,c as g,a as b,s as n,j as t,g as p,G as j,d as k,r as v}from"./index-d26a3a86.js";import{M as w}from"./Main-6ec37c79.js";import{F as S,B as y}from"./Input-dcb8fffb.js";function u(e=c){const o=e===c?f:g(e);return function(){const{store:s}=o();return s}}const C=u();function $(e=c){const o=e===c?C:u(e);return function(){return o().dispatch}}const B=$(),d=()=>B(),l=b,T=n.li`
 	width: calc(100% - 50px);
 	padding: 5px;
 	text-align: center;

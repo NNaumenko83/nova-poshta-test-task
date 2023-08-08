@@ -1,4 +1,4 @@
-import{s as t,j as e}from"./index-c7929d65.js";import{M as n}from"./Main-3891b052.js";const r="/nova-poshta-test-task/assets/10-error-404-page-examples-for-UX-design_min-9720d0b2.jpg",s=t.div`
+import{s as t,j as e}from"./index-d26a3a86.js";import{M as n}from"./Main-6ec37c79.js";const r="/nova-poshta-test-task/assets/10-error-404-page-examples-for-UX-design_min-9720d0b2.jpg",s=t.div`
 	display: flex;
 	justify-content: center;
 	padding: 20px;
