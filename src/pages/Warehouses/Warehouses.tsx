@@ -27,6 +27,8 @@ const Warehouses = () => {
 			setCities({ Addresses: [], TotalCount: 0 });
 			return;
 		}
+		setTotalPage(1);
+		setCities({ Addresses: [], TotalCount: 0 });
 		setIsLoading(true);
 		try {
 			const results = await getCitiesByName(city, page.toString());
