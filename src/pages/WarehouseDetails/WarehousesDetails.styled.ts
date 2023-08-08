@@ -6,7 +6,7 @@ export const InfoWrapper = styled.div`
 
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 200px repeat(8, 1fr);
+	grid-template-rows: 220px repeat(8, 1fr);
 
 	font-size: ${props => props.theme.fontSizes.xssmall};
 
