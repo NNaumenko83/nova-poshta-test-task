@@ -1,6 +1,16 @@
 import { Container } from "../Container/Container";
+import { Link } from "react-router-dom";
+import { styled } from "styled-components";
 
-import { HeaderContainer, HeaderStyled, LogoText, NavigateWrapper } from "./Header.styled";
+const LogoLink = styled(Link)`
+	font-size: ${props => props.theme.fontSizes.medium};
+	transition: color 200ms linear;
+	&:hover {
+		color: ${props => props.theme.colors.footerLinkSecondColor};
+	}
+`;
+
+import { HeaderContainer, HeaderStyled, NavigateWrapper } from "./Header.styled";
 
 import ResponsiveDrawer from "../Drawer/Drawer";
 import { NavigateMenu } from "../NavigateMenu/NavigateMenu";
@@ -10,7 +20,7 @@ export const Header: React.FC = () => {
 		<HeaderStyled>
 			<Container>
 				<HeaderContainer>
-					<LogoText>NovaPoshta</LogoText>
+					<LogoLink to="/">NovaPoshta</LogoLink>
 					<ResponsiveDrawer />
 					<NavigateWrapper>
 						<NavigateMenu />

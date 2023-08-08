@@ -5,10 +5,6 @@ export const HeaderStyled = styled.header`
 	color: ${props => props.theme.colors.brightTxt};
 `;
 
-export const LogoText = styled.span`
-	font-size: ${props => props.theme.fontSizes.xsmall};
-`;
-
 export const HeaderContainer = styled.div`
 	height: 100%;
 	display: flex;
