@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { useDebouncedCallback } from "use-debounce";
 import { MutatingDots } from "react-loader-spinner";
+import { toast } from "react-toastify";
 
 import FocusOutlineInput from "../../components/Input/Input";
 import { Main } from "../../components/Main/Main";
@@ -42,6 +43,23 @@ const Warehouses = () => {
 	const onChange: React.ChangeEventHandler<HTMLInputElement> = e => {
 		setError("");
 		setPage(1);
+
+		if (e.target.value.trim() !== "" && !/^[а-яА-ЯіІїЇєЄ'"\s-]+$/.test(e.target.value)) {
+			toast.error("Введіть будь ласка назву населеного пункту українською мовою", {
+				position: "top-left",
+				autoClose: 1500,
+				hideProgressBar: false,
+				closeOnClick: true,
+				pauseOnHover: true,
+				draggable: true,
+				progress: undefined,
+				theme: "light",
+			});
+
+			setCityName(cityName);
+			return;
+		}
+
 		setCityName(e.target.value);
 
 		debouncedGetCities(e.target.value);
