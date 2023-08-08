@@ -23,8 +23,8 @@ const theme = {
 		xlarge: "4.5",
 	},
 	fontWeights: {
-		light: 500,
-		normal: 300,
+		light: 300,
+		normal: 500,
 		bold: 700,
 	},
 };

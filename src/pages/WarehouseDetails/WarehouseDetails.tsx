@@ -13,6 +13,8 @@ import {
 	SheduleTable,
 	TableCell,
 	TableHeader,
+	CommonInfoWrapper,
+	InfoTitle,
 } from "./WarehousesDetails.styled";
 
 interface IdaysOfWeek {
@@ -118,23 +120,25 @@ export const WarehousesDetails = () => {
 		<Main>
 			{warehouseInfo.length > 0 && (
 				<InfoWrapper>
-					<div style={{ background: "yellow" }}>
-						<p>{warehouseInfo[0].Description}</p>
-					</div>
+					<CommonInfoWrapper>
+						<div>
+							<InfoTitle>{warehouseInfo[0].Description}</InfoTitle>
+						</div>
 
-					<div style={{ background: "pink" }}>
-						<p>Обмеження за габаритами на відправку (см):</p>
-						{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
-					</div>
+						<div>
+							<InfoTitle>Обмеження за габаритами на відправку (см):</InfoTitle>
+							{displayDimensions(warehouseInfo[0].SendingLimitationsOnDimensions)}
+						</div>
 
-					<div style={{ background: "grey" }}>
-						<p>Обмеження за габаритами на отримання (см):</p>
-						{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
-					</div>
+						<div>
+							<InfoTitle>Обмеження за габаритами на отримання (см):</InfoTitle>
+							{displayDimensions(warehouseInfo[0].ReceivingLimitationsOnDimensions)}
+						</div>
 
-					<div style={{ background: "tomato" }}>
-						<p>Обмеження ваги: до {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
-					</div>
+						<div>
+							<InfoTitle>Обмеження ваги:</InfoTitle> <p>до {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
+						</div>
+					</CommonInfoWrapper>
 
 					<SheduleTable>
 						<TableHeader>Графік роботи</TableHeader>

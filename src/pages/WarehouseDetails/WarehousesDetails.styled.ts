@@ -1,26 +1,37 @@
 import { styled } from "styled-components";
 
 export const InfoWrapper = styled.div`
-	outline: 1px solid green;
 	height: 100%;
-	background: blue;
+	padding: 15px;
+
 	font-size: ${props => props.theme.fontSizes.xsmall};
 
 	display: grid;
-	grid-template-columns: 1fr;
-	grid-template-rows: 50px repeat(2, 100px) 30px 1fr;
-
-	grid-row-gap: 5px;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: 200px, repeat(8, 1fr);
+	grid-column-gap: 0px;
+	grid-row-gap: 0px;
 
 	@media screen and (min-width: 768px) {
 		grid-template-columns: repeat(7, 1fr);
-		grid-template-rows: repeat(7, 1fr);
+		grid-template-rows: 200px repeat(3, 1fr);
 	}
 `;
 
+export const CommonInfoWrapper = styled.div`
+	grid-area: 1 / 1 / 2 / 3;
+	@media screen and (min-width: 768px) {
+		grid-area: 1 / 1 / 2 / 8;
+	}
+`;
+
+export const InfoTitle = styled.h2`
+	font-weight: ${props => props.theme.fontWeights.bold};
+`;
+
 export const SheduleTable = styled.div`
-	border: 1px solid red;
-	display: grid;
+	grid-area: 2 / 1 / 10 / 3;
+
 	display: grid;
 
 	grid-template-columns: repeat(2, 1fr);
@@ -29,9 +40,9 @@ export const SheduleTable = styled.div`
 	grid-row-gap: 2px;
 
 	@media screen and (min-width: 768px) {
-		grid-area: 6 / 1 / 8 / 8;
+		grid-area: 2 / 1 / 5 / 8;
 		grid-template-columns: repeat(7, 1fr);
-		grid-template-rows: repeat(3, 1fr);
+		grid-template-rows: repeat(3, 40px);
 		grid-column-gap: 0px;
 		grid-row-gap: 0px;
 	}
@@ -42,13 +53,13 @@ export const TableHeader = styled.div`
 	display: flex;
 	align-items: center;
 	justify-content: center;
+	border-bottom: 1px solid ${props => props.theme.colors.borderComponents};
 	@media screen and (min-width: 768px) {
 		grid-area: 1 / 1 / 2 / 8;
 	}
 `;
 
 export const ColumnTableOne = styled.div`
-	background: green;
 	grid-area: 2 / 1 / 9 / 2;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -65,7 +76,6 @@ export const ColumnTableOne = styled.div`
 `;
 
 export const ColumnTableTwo = styled.div`
-	background: purple;
 	grid-area: 2 / 2 / 9 / 3;
 	display: grid;
 	grid-template-columns: 1fr;
@@ -85,4 +95,6 @@ export const TableCell = styled.div`
 	padding: 5px;
 
 	display: flex;
+	align-items: center;
+	justify-content: center;
 `;
