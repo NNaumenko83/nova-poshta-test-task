@@ -9,8 +9,8 @@ export const InfoWrapper = styled.div`
 	display: grid;
 	grid-template-columns: 1fr;
 	grid-template-rows: 50px repeat(2, 100px) 30px 1fr;
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
+
+	grid-row-gap: 5px;
 `;
 
 export const SheduleTable = styled.div`
@@ -20,8 +20,8 @@ export const SheduleTable = styled.div`
 
 	grid-template-columns: repeat(2, 1fr);
 	grid-template-rows: repeat(8, 1fr);
-	grid-column-gap: 0px;
-	grid-row-gap: 0px;
+	grid-column-gap: 2px;
+	grid-row-gap: 2px;
 `;
 
 export const TableHeader = styled.div`
@@ -44,6 +44,5 @@ export const ColumnTableTwo = styled.div`
 export const TableCell = styled.div`
 	padding: 5px;
 
-	display: flex; */
-	/* align-items: center;
+	display: flex;
 `;

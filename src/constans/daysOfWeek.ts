@@ -1,9 +1,9 @@
 export const daysOfWeek = {
-	Monday: "ПН",
-	Tuesday: "ВТ",
-	Wednesday: "СР",
-	Thursday: "ЧТ",
-	Friday: "ПТ",
-	Saturday: "СБ",
-	Sunday: "НД",
+	Monday: "Понеділок",
+	Tuesday: "Вівторок",
+	Wednesday: "Середа",
+	Thursday: "Четвер",
+	Friday: "П'ятниця",
+	Saturday: "Субота",
+	Sunday: "Неділя",
 };

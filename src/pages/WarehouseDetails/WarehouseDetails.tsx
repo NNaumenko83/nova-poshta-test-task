@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getWarehouseInfo } from "../../services/api/getWarehouseInfo";
 import { getErrorMessage } from "../../utils/getErrorMessage";
 import { daysOfWeek } from "../../constans/daysOfWeek";
+import { dimensionsUa } from "../../constans/dimemsions";
+
 import {
 	ColumnTableOne,
 	ColumnTableTwo,
@@ -13,11 +15,26 @@ import {
 	TableHeader,
 } from "./WarehousesDetails.styled";
 
+interface IdaysOfWeek {
+	Monday: string;
+	Tuesday: string;
+	Wednesday: string;
+	Thursday: string;
+	Friday: string;
+	Saturday: string;
+	Sunday: string;
+}
 interface IDimensions {
 	Height: number;
 	Length: number;
 	Width: number;
 }
+
+type DimensionsUa = {
+	Width: string;
+	Height: string;
+	Length: string;
+};
 
 interface IShedule {
 	Friday: string;
@@ -74,21 +91,28 @@ export const WarehousesDetails = () => {
 			<ul>
 				{Object.entries(dimensions).map(([key, value]) => (
 					<li key={key}>
-						{key}: {value}
+						{dimensionsUa[key as keyof DimensionsUa]}: {value}
 					</li>
 				))}
 			</ul>
 		);
 	};
 
-	const displaySchedule = (schedule: IShedule) => {
+	const displayScheduleTime = (schedule: IShedule) => {
 		console.log(Object.entries(schedule));
 		return (
-			<ColumnTableTwo>
-				{Object.entries(schedule).map(([day, time]) => (
-					<TableCell key={day}>{time}</TableCell>
-				))}
-			</ColumnTableTwo>
+			<>
+				<ColumnTableOne>
+					{Object.entries(schedule).map(([day]) => (
+						<TableCell key={day}>{daysOfWeek[day as keyof IdaysOfWeek]}</TableCell>
+					))}
+				</ColumnTableOne>
+				<ColumnTableTwo>
+					{Object.entries(schedule).map(([day, time]) => (
+						<TableCell key={day}>{time}</TableCell>
+					))}
+				</ColumnTableTwo>
+			</>
 		);
 	};
 
@@ -111,7 +135,7 @@ export const WarehousesDetails = () => {
 					</div>
 
 					<div style={{ background: "tomato" }}>
-						<p>Обмеження ваги: До {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
+						<p>Обмеження ваги: до {warehouseInfo[0].PlaceMaxWeightAllowed} кг </p>
 					</div>
 
 					<SheduleTable>
@@ -126,7 +150,7 @@ export const WarehousesDetails = () => {
 							<div></div>
 						</ColumnTableOne>
 
-						{displaySchedule(warehouseInfo[0].Schedule)}
+						{displayScheduleTime(warehouseInfo[0].Schedule)}
 					</SheduleTable>
 				</InfoWrapper>
 			)}
