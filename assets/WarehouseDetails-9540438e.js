@@ -1,4 +1,4 @@
-import{b as u,A as j,s as i,r as d,v as w,j as e,M as y}from"./index-239c1654.js";import{M as b}from"./Main-087e26a2.js";import{g as W}from"./getErrorMessage-20be7751.js";const v=async r=>{const l={apiKey:j,modelName:"Address",calledMethod:"getWarehouses",methodProperties:{Ref:r}},a=await u.post("",l);if(a.data.errors[0])throw new Error(a.data.errors[0]);return a.data.data},T={Monday:"Понеділок",Tuesday:"Вівторок",Wednesday:"Середа",Thursday:"Четвер",Friday:"П'ятниця",Saturday:"Субота",Sunday:"Неділя"},I={Width:"ширина",Height:"висота",Length:"довжина"},S=i.div`
+import{b as u,A as j,s as i,r as d,v as w,j as e,M as y}from"./index-c7929d65.js";import{M as b}from"./Main-3891b052.js";import{g as W}from"./getErrorMessage-20be7751.js";const v=async r=>{const l={apiKey:j,modelName:"Address",calledMethod:"getWarehouses",methodProperties:{Ref:r}},a=await u.post("",l);if(a.data.errors[0])throw new Error(a.data.errors[0]);return a.data.data},T={Monday:"Понеділок",Tuesday:"Вівторок",Wednesday:"Середа",Thursday:"Четвер",Friday:"П'ятниця",Saturday:"Субота",Sunday:"Неділя"},I={Width:"ширина",Height:"висота",Length:"довжина"},S=i.div`
 	height: 100%;
 	padding: 15px;
 
