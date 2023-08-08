@@ -1,27 +1,50 @@
-# React + TypeScript + Vite
+# NovaPoshta
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![NovaPoshta Logo](./src/assets/np_for_readme.png)
 
-Currently, two official plugins are available:
+NovaPoshta is a web application built using React and Vite that allows users to track their shipments and find Nova Poshta branches based on various criteria.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Table of Contents
 
-## Expanding the ESLint configuration
+- [NovaPoshta](#novaposhta)
+  - [Table of Contents](#table-of-contents)
+  - [Introduction](#introduction)
+  - [Features](#features)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Usage](#usage)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Introduction
 
-- Configure the top-level `parserOptions` property like this:
+NovaPoshta provides a user-friendly interface to track the status of shipments and locate nearby branches of Nova Poshta, a popular courier service in Ukraine. Users can search for branches by city, type, or by providing a branch number to retrieve detailed information.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Features
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- **Shipment Tracking:** Easily track the status of your shipments using the provided tracking number.
+- **Branch Locator:** Find Nova Poshta branches in your chosen city or based on specific branch types.
+- **Detailed Information:** Obtain detailed information about a specific branch by providing its unique branch number.
+
+## Getting Started
+
+Follow these steps to set up and run NovaPoshta locally on your machine.
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed:
+
+- [Node.js](https://nodejs.org/) (LTS version)
+
+### Installation
+
+1. Clone the repository to your local machine: `git clone https://github.com/NNaumenko83/nova-poshta-test-task`
+
+2. Navigate to the project directory: `cd NovaPoshta`
+
+3. Install the project's dependencies:`npm install`
+
+### Usage
+
+1. Start the development server: `npm run dev`
+
+2. Open your web browser and navigate to http://localhost:5173/nova-poshta-test-task/. The page will automatically reload whenever you save changes to the project files.
