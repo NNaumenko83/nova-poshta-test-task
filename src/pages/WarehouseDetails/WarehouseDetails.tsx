@@ -61,13 +61,11 @@ interface IWarehouseInfo {
 
 const WarehousesDetails = () => {
 	const [error, setError] = useState("");
-	console.log("error:", error);
+
 	const [isLoading, setIsLoading] = useState(false);
-	console.log("isLoading:", isLoading);
+
 	const [warehouseInfo, setWarehouseInfo] = useState<IWarehouseInfo[]>([]);
 	const { city, ref } = useParams();
-	console.log("ref:", ref);
-	console.log("city:", city);
 
 	useEffect(() => {
 		const fetchWarehouseInfo = async () => {
@@ -75,7 +73,7 @@ const WarehousesDetails = () => {
 			if (ref) {
 				try {
 					const warehouseInfo = await getWarehouseInfo(ref);
-					console.log("warehouseInfo:", warehouseInfo);
+
 					setWarehouseInfo(warehouseInfo);
 				} catch (error) {
 					setError(getErrorMessage(error));
