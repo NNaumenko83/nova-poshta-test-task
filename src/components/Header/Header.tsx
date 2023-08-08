@@ -4,8 +4,9 @@ import { styled } from "styled-components";
 
 const LogoLink = styled(Link)`
 	font-size: ${props => props.theme.fontSizes.medium};
-	transition: color 200ms linear;
+	transition: all 200ms linear;
 	&:hover {
+		text-shadow: 0px 0px 3px #ceb30a;
 		color: ${props => props.theme.colors.footerLinkSecondColor};
 	}
 `;

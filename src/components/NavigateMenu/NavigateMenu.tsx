@@ -21,7 +21,7 @@ const NavLinkStyled = styled(NavLink)`
 		box-shadow: 1px 0px 15px 0px rgba(245, 245, 245, 1);
 	}
 
-	transition: color, text-shadow 300ms linear;
+	transition: all 300ms linear;
 	&:hover,
 	&:focus {
 		color: #ffd42f;
