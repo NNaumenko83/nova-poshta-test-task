@@ -8,7 +8,6 @@ interface ButtonStyledProps {
 	children: ReactNode;
 	disabled: boolean;
 	onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-	// Ви можете додати сюди інші властивості, або використовувати `...otherProps` для додаткових властивостей
 }
 
 export const ButtonStyled: React.FC<ButtonStyledProps> = ({
